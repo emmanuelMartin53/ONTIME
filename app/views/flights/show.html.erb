@@ -1,0 +1,13 @@
+<h3>Voyage vers <%= @flight.destination.capitalize %></h3>
+<h6>N° de vol : <%= @flight.flight_number %> en partance de <%= @flight.airport %></h6>
+<p>Le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %></p>
+<p>Décollage : <%= @flight.takeoff_time.strftime("%H:%M") %></p>
+<p>Arrivée prévu le : <%= @flight.landing_time.strftime("%d/%m/%Y") %></p>
+<p>à : <%= @flight.landing_time.strftime("%H:%M") %></p>
+<p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
+<p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
+
+
+
+  <%= link_to "Supprimer", flight_path(@flight),
+                            data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>

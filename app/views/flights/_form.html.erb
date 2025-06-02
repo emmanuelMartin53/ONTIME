@@ -1,0 +1,10 @@
+<%= simple_form_for @flight do |f| %>
+
+  <%= f.input :flight_number, label: "Numéro de vol" %>
+
+  <%= f.input :user_departure_address, label: "Adresse de départ de l’utilisateur" %>
+  <%= f.input :mobility_choice, label: "Mode de transport" %>
+  <%= f.input :arrival_time_wanted, label: "Combien de temps avant votre vol voulez vous être à votre porte d'embarquement" %>
+
+  <%= f.button :submit, "Créer le vol" %>
+<% end %>
