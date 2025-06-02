@@ -10,9 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_02_121335) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_02_123023) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "flights", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "task_id", null: false
+    t.string "flight_number"
+    t.string "airport"
+    t.string "terminal"
+    t.string "destination"
+    t.date "takeoff_time"
+    t.date "landing_time"
+    t.string "user_departure_address"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_flights_on_task_id"
+    t.index ["user_id"], name: "index_flights_on_user_id"
+  end
+
+  create_table "tasks", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.boolean "done"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -26,4 +50,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_121335) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "flights", "tasks"
+  add_foreign_key "flights", "users"
+  add_foreign_key "tasks", "users"
 end
