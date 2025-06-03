@@ -6,9 +6,11 @@ class CreateFlights < ActiveRecord::Migration[7.1]
       t.string :airport
       t.string :terminal
       t.string :destination
-      t.date :takeoff_time
-      t.date :landing_time
+      t.datetime :takeoff_time
+      t.datetime :landing_time
       t.string :user_departure_address
+      t.string :mobility_choice
+      t.integer :arrival_time_wanted
 
       t.timestamps
     end

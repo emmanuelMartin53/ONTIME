@@ -20,9 +20,11 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_02_144303) do
     t.string "airport"
     t.string "terminal"
     t.string "destination"
-    t.date "takeoff_time"
-    t.date "landing_time"
+    t.datetime "takeoff_time"
+    t.datetime "landing_time"
     t.string "user_departure_address"
+    t.string "mobility_choice"
+    t.integer "arrival_time_wanted"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_flights_on_user_id"

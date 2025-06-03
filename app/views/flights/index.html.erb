@@ -1,0 +1,7 @@
+<% @flights.each do |flight| %>
+
+<%= link_to "#{flight.destination}", flight_path(flight)  %>
+
+<% end %>
+
+<%= link_to "ajouter un voyages", new_flight_path %>
