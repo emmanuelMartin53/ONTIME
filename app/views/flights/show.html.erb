@@ -32,7 +32,7 @@
     <div class="flight-show-main-card">
       <h2>Arrivée à l'aéroport</h2>
       <p>(au plus tard)</p>
-      <h3>8:37</h3>
+      <h3><%= @flight.takeoff_time.strftime("%H:%M")%></h3>
     </div>
   </div>
   <div class="flight-show-main-card-link">
@@ -59,6 +59,8 @@
         <% hours = @flight.duration_second / 3600 %>
         <% minutes = (@flight.duration_second % 3600) / 60 %>
       <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+
+      <%= @flight.estimated_wait %>
 
     </div>
   </div>
