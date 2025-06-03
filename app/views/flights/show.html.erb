@@ -27,10 +27,10 @@
     <div class="flight-show-main-card">
       <h2>Départ de chez vous</h2>
       <p>(au plus tard)</p>
-      <h3>7:28</h3>
+      <h3><%= @final_timing %></h3>
     </div>
     <div class="flight-show-main-card">
-      <h2>Arrivée à l'aéroport</h2>
+      <h2>Décollage à</h2>
       <p>(au plus tard)</p>
       <h3><%= @flight.takeoff_time.strftime("%H:%M")%></h3>
     </div>
@@ -55,13 +55,10 @@
       <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
       <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
       <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
-
         <% hours = @flight.duration_second / 3600 %>
         <% minutes = (@flight.duration_second % 3600) / 60 %>
       <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
-
-      <%= @flight.estimated_wait %>
-
+      <p>Nombre de vol prévu sur votre terminal au même crenau : <%= @flight.estimated_wait %> </p>
     </div>
   </div>
 </div>
