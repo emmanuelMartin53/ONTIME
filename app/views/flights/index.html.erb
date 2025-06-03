@@ -1,7 +1,23 @@
-<% @flights.each do |flight| %>
+<div class="flight-index-title">
+  <h1>Mes vols</h1>
+</div>
 
-<%= link_to "#{flight.destination}", flight_path(flight)  %>
+<div class="flight-index-container">
+  <% @flights.each do |flight| %>
+    <div class="flight-index-card">
+      <div class="flight-index-card-photo">
 
-<% end %>
-
-<%= link_to "ajouter un voyages", new_flight_path %>
+      </div>
+      <div class="flight-index-card-info">
+        <p><%= flight.takeoff_time.strftime("%d/%m/%Y") %></p>
+        <p><%= flight.destination %></p>
+      </div>
+      <div class="flight-index-card-button">
+        <%= link_to "Voir", flight_path(flight)  %>
+      </div>
+    </div>
+  <% end %>
+    <div class="flight-index-add-button">
+        <%= link_to "+", new_flight_path %>
+    </div>
+</div>
