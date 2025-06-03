@@ -1,11 +1,13 @@
 require 'net/http'
 require 'json'
+require 'uri'
+
 
 class FlightsController < ApplicationController
 
   def fetch_flight_data(flight_number)
-    keyAPI = "20240d4ae08ae4b955febb1985ebe89e"
-    url = URI("https://api.aviationstack.com/v1/flights?access_key=#{keyAPI}&flight_iata=#{flight_number}")
+    api_key = ENV["AVIATION_STACK_API_KEY"]
+    url = URI("https://api.aviationstack.com/v1/flights?access_key=#{api_key}&flight_iata=#{flight_number}")
     response = Net::HTTP.get(url)
     data = JSON.parse(response)
 
@@ -39,9 +41,11 @@ class FlightsController < ApplicationController
   def create
     flight_number = params[:flight][:flight_number]
     api_data = fetch_flight_data(flight_number)
+    # @estimated_affluence = estimated_affluence // va return un integer en minutes qui represente temps parking -> embarquement
 
 
     if api_data.present?
+
       @flight = Flight.new(
         user: current_user,
         flight_number: flight_number,
@@ -52,8 +56,10 @@ class FlightsController < ApplicationController
         landing_time: api_data["arrival"]["scheduled"],
         user_departure_address: params[:flight][:user_departure_address],
         mobility_choice: params[:flight][:mobility_choice],
-        arrival_time_wanted: params[:flight][:arrival_time_wanted]
+        arrival_time_wanted: params[:flight][:arrival_time_wanted],
+        duration_second: duration_trajet(api_data["departure"]["airport"],params[:flight][:user_departure_address],params[:flight][:mobility_choice] )
       )
+
     else
       flash[:alert] = "Aucune donnée de vol trouvée pour ce numéro."
       redirect_to new_flight_path and return
@@ -79,5 +85,23 @@ class FlightsController < ApplicationController
                                    :takeoff_time, :landing_time, :user_departure_address, :mobility_choice)
   end
 
+  def estimer_affluence
+
+  end
+
+  def duration_trajet(destination, origin, typeTransport)
+    api_key = ENV["GOOGLE_API_KEY"]
+
+    origins = URI.encode_www_form_component(origin)
+    destinations = URI.encode_www_form_component("Aeroport #{destination}")
+    mode = URI.encode_www_form_component(typeTransport)
+
+    url = URI("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=#{destinations}&origins=#{origins}&mode=#{mode}&units=imperial&key=#{api_key}")
+
+    response = Net::HTTP.get(url)
+    data = JSON.parse(response)
+    duration_seconds = data["rows"][0]["elements"][0]["duration"]["value"]
+    duration_seconds
+  end
 
 end
