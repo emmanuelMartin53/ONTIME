@@ -67,6 +67,11 @@
       <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
       <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
       <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
+
+        <% hours = @flight.duration_second / 3600 %>
+        <% minutes = (@flight.duration_second % 3600) / 60 %>
+      <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+
     </div>
   </div>
 </div>
