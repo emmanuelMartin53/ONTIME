@@ -1,0 +1,12 @@
+<iframe
+  width="400"
+  height="300"
+  style="border:0"
+  loading="lazy"
+  allowfullscreen
+  referrerpolicy="no-referrer-when-downgrade"
+  src="https://www.google.com/maps/embed/v1/directions?key=AIzaSyBC5CL4XQN6vA-Y-FOVWreDmCmWPpuIHnU
+    &origin=<%=@flight.user_departure_address%>
+    &destination=<%= @flight.destination%>
+    &avoid=tolls|highways">
+</iframe>

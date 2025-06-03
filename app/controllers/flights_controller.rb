@@ -43,7 +43,7 @@ class FlightsController < ApplicationController
     api_data = fetch_flight_data(flight_number)
     # @estimated_affluence = estimated_affluence // va return un integer en minutes qui represente temps parking -> embarquement
 
-
+    #debugger
     if api_data.present?
 
       @flight = Flight.new(

@@ -47,8 +47,8 @@
   loading="lazy"
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyB14spnRqTyx6K0z6fsNi-PJcJ5Cts2Fnk
-    &q=(49.0061861, 2.538445)">
+  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBC5CL4XQN6vA-Y-FOVWreDmCmWPpuIHnU
+    &q=<%= @flight.destination%> ">
 </iframe>
 
   </div>
@@ -68,9 +68,13 @@
       <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
       <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
 
-        <% hours = @flight.duration_second / 3600 %>
-        <% minutes = (@flight.duration_second % 3600) / 60 %>
-      <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+        <% if @flight.duration_second.present? %>
+          <% hours = @flight.duration_second / 3600 %>
+          <% minutes = (@flight.duration_second % 3600) / 60 %>
+          <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+        <% else %>
+          <p>Durée du trajet non disponible.</p>
+        <% end %>
 
     </div>
   </div>
