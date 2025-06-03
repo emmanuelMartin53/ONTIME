@@ -58,7 +58,7 @@
 
         <% hours = @flight.duration_second / 3600 %>
         <% minutes = (@flight.duration_second % 3600) / 60 %>
-      <p>Temps de trajet : <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+      <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
 
     </div>
   </div>

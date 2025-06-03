@@ -57,7 +57,7 @@ class FlightsController < ApplicationController
         user_departure_address: params[:flight][:user_departure_address],
         mobility_choice: params[:flight][:mobility_choice],
         arrival_time_wanted: params[:flight][:arrival_time_wanted],
-        duration_second: duration_trajet(api_data["arrival"]["airport"],params[:flight][:user_departure_address] )
+        duration_second: duration_trajet(api_data["departure"]["airport"],params[:flight][:user_departure_address],params[:flight][:mobility_choice] )
       )
 
     else
@@ -89,18 +89,18 @@ class FlightsController < ApplicationController
 
   end
 
-  def duration_trajet(destination, origin)
+  def duration_trajet(destination, origin, typeTransport)
     api_key = ENV["GOOGLE_API_KEY"]
 
     origins = URI.encode_www_form_component(origin)
     destinations = URI.encode_www_form_component("Aeroport #{destination}")
+    mode = URI.encode_www_form_component(typeTransport)
 
-    url = URI("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=#{destinations}&origins=#{origins}&units=imperial&key=#{api_key}")
+    url = URI("https://maps.googleapis.com/maps/api/distancematrix/json?destinations=#{destinations}&origins=#{origins}&mode=#{mode}&units=imperial&key=#{api_key}")
 
     response = Net::HTTP.get(url)
     data = JSON.parse(response)
     duration_seconds = data["rows"][0]["elements"][0]["duration"]["value"]
-
     duration_seconds
   end
 
