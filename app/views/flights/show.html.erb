@@ -47,7 +47,7 @@
   loading="lazy"
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBC5CL4XQN6vA-Y-FOVWreDmCmWPpuIHnU
+  src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %>
     &q=<%= @flight.destination%> ">
 </iframe>
 
