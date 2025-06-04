@@ -7,4 +7,6 @@ class PagesController < ApplicationController
     @flights = Flight.where('takeoff_time > ?', Time.now)
     @tasks = Task.all
   end
+
 end
+

@@ -25,7 +25,7 @@ class FlightsController < ApplicationController
     duration_second_value = DurationTraject.new().duration_trajet(api_data["departure"]["airport"],params[:flight][:user_departure_address],params[:flight][:mobility_choice] )
     estimated_wait_value = EstimatedWait.new().estimated_wait(api_data["departure"]["iata"],Time.parse(api_data["departure"]["scheduled"]).strftime("%Y-%m-%d"),Time.parse(api_data["departure"]["scheduled"]).strftime("%H:%M"),api_data["departure"]["terminal"])
 
-
+    #debugger
     if api_data.present?
       @flight = Flight.new(
         user: current_user,
