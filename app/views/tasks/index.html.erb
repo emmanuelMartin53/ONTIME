@@ -1,7 +1,11 @@
-<h1>Tasks#index</h1>
+<h1 class= "MainTitle">Ma To Do</h1>
 
-<ul>
-  <% @tasks.each do |task| %>
-    <li><%= task.content %></li>
+<div class="taskcontainer">
+  <%= render 'new', task: @task %>
+
+  <% if @tasks.empty? %>
+    <p>Vous n'avez pas encore de tâches dans votre do list...</p>
+  <% else %>
+    <%= render 'list', task: @task %>
   <% end %>
-</ul>
+</div>
