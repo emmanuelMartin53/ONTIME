@@ -14,6 +14,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_092834) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+
   create_table "alerts", force: :cascade do |t|
     t.bigint "flight_id", null: false
     t.string "content"
@@ -21,6 +22,12 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_092834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_alerts_on_flight_id"
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+
   end
 
   create_table "flights", force: :cascade do |t|
@@ -49,7 +56,8 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_092834) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "flight_id"
-    t.string "categorie"
+    t.bigint "category_id"
+    t.index ["category_id"], name: "index_tasks_on_category_id"
     t.index ["flight_id"], name: "index_tasks_on_flight_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end

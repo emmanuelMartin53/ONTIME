@@ -1,0 +1,5 @@
+<%= simple_form_for @task do |f| %>
+  <%= f.input :content, label: false %>
+  <%= f.input :category_id, collection: Category.all, label: false, prompt: "Catégorie..." %>
+  <%= f.button :submit %>
+<% end %>

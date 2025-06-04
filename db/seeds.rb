@@ -1,18 +1,24 @@
 Flight.all.destroy_all
 Task.all.destroy_all
 User.all.destroy_all
+Category.all.destroy_all
 
 @user = User.new(email:"charlie@gmail.com", password:"ouioui", first_name:"Charlie" )
 @user.save
 puts "user created"
 
-@task = Task.new(user: User.last, content: "prendre des slips")
+administratif = Category.create!(name: "Administratif")
+mavalise = Category.create!(name: "Ma valise")
+avantdepartir = Category.create!(name: "Avant de partir")
+
+
+@task = Task.new(user: User.last, content: "prendre des slips", category: mavalise)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des pulls")
+@task = Task.new(user: User.last, content: "prendre des pulls", category: mavalise)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des chaussettes")
+@task = Task.new(user: User.last, content: "prendre des chaussettes", category: mavalise)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des tshirts")
+@task = Task.new(user: User.last, content: "prendre des tshirts", category: mavalise)
 @task.save!
 puts"task created"
 
@@ -21,9 +27,11 @@ puts "Starting flight creation"
 @flight = Flight.new(user: User.first , flight_number:"AF7437", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 4, 1, 45), landing_time:DateTime.new(2025, 6, 4, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice: 1, arrival_time_wanted:1)
 @arrayTask = @flight.user.tasks.where(flight_id: nil)
 
+p @arrayTask
+
 @arrayTask.each do |task|
   puts task
-  Task.create!(user: task.user, content: task.content, flight: @flight)
+  Task.create!(user: task.user, content: task.content, category: task.category, flight: @flight)
 end
 
 @flight.save!
@@ -35,7 +43,7 @@ puts "Starting flight creation"
 
 @arrayTask.each do |task|
   puts task
-  Task.create!(user: task.user, content: task.content, flight: @flight)
+  Task.create!(user: task.user, content: task.content, category: task.category, flight: @flight)
 end
 
 @flight.save!
@@ -47,7 +55,7 @@ puts "Starting flight creation"
 
 @arrayTask.each do |task|
   puts task
-  Task.create!(user: task.user, content: task.content, flight: @flight)
+  Task.create!(user: task.user, content: task.content, category: task.category, flight: @flight)
 end
 
 @flight.save!
