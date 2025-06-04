@@ -2,7 +2,7 @@ Flight.all.destroy_all
 Task.all.destroy_all
 User.all.destroy_all
 
-@user = User.new(email:"charlie@gmail.com", password:"ouioui" )
+@user = User.new(email:"charlie@gmail.com", password:"ouioui", first_name:"Charlie" )
 @user.save
 puts "user created"
 

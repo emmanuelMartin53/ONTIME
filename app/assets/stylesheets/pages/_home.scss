@@ -1,1 +1,148 @@
-// Specific CSS for your home-page
+.container {
+  background-color: white;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 30px;
+}
+
+.image-avatar {
+  display: flex;
+  justify-content: center;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  border: #000 solid 2px;
+}
+
+.title {
+  text-align: center;
+}
+
+.next-travel {
+  justify-items: center;
+  padding: 10px 0px 30px 0px;
+}
+
+.next-travel-text {
+  width: 280px;
+}
+
+.home-index-card {
+	display: flex;
+	height: 70px;
+	width: 320px;
+  align-items: center;
+	border-radius: 15px;
+	background-color: $fond-card;
+}
+
+.home-index-card-photo {
+	background-color: rgba(205, 81, 81, 0.304);
+	border-radius: 15px 0 0 15px;
+	width: 100px;
+}
+
+.home-index-card-info {
+	padding: 10px 20px;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	width: 180px;
+	p {
+		margin: 0;
+	}
+}
+
+.home-index-card-button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 70px;
+	padding: 0 10px;
+	a {
+		background-color: $fond-button;
+		color: white;
+		border-radius: 10px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+		height: 30px;
+		width: 50px;
+	}
+}
+
+.next-step {
+  text-align: center;
+  color: #71727A;
+  padding: 0px 0px 10px 0px;
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+
+.cards-row {
+  display: flex;
+  gap: 20px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 130px;
+  width: 150px;
+  padding: 10px 0 0 0;
+  border-radius: 15px;
+  background-color: $fond-card;
+  border: none;
+  text-align: center;
+  overflow: hidden;
+
+  h6 {
+    width: 100%;
+    margin: 30px 0px 0px 0px;
+    font-size: 17px;
+    font-weight: bold;
+    display: block;
+  }
+
+  h4 {
+    font-size: 17px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+
+
+  p {
+    font-size: 14px;
+    color: #404146;
+    margin: 0 10px;
+    flex-grow: 1;
+  }
+
+  .home-index-card2-button {
+    margin-top: auto;
+    width: 100%;
+
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+      width: 100%;
+      background-color: $fond-button;
+      color: white;
+      text-decoration: none;
+      border: none;
+      border-radius: 0 0 15px 15px;
+      font-weight: bold;
+    }
+  }
+}

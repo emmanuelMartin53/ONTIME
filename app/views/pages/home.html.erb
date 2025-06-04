@@ -1,3 +1,69 @@
-<%= link_to "voir mes voyages", flights_path %>
-<%= link_to "ajouter un voyages", new_flight_path %>
-<%= link_to "voir votre todolist", tasks_path %>
+<div class="container">
+  <div class="image-avatar">
+    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+  </div>
+  <div class="flight-index-title">
+    <h1>Bienvenue <%= @user.first_name %> !</h1>
+  </div>
+
+
+  <div class="next-travel">
+    <% if @flight %>
+      <div class="next-travel-text">
+        <h6>J-<%= (@flight.takeoff_time.to_date - Date.today).to_i %> avant votre prochain trajet :</h6>
+      </div>
+      <div class="home-index-card">
+        <div class="home-index-card-photo">
+
+        </div>
+        <div class="home-index-card-info">
+          <p><%= @flight.takeoff_time.strftime("%d/%m/%Y") %></p>
+          <p><%= @flight.destination %></p>
+        </div>
+        <div class="home-index-card-button">
+          <%= link_to "Voir", flight_path(@flight) %>
+        </div>
+      </div>
+    <% else %>
+      <h4>Aucun voyage à venir</h4>
+    <% end %>
+  </div>
+
+
+  <div class="next-step">
+    <p>Que voulez vous faire aujourd'hui ?</p>
+  </div>
+  <div class="cards-container">
+    <div class="cards-row">
+      <div class="card">
+
+          <h6>Ajouter un vol</h6>
+
+        <div class="home-index-card2-button">
+          <%= link_to "+", new_flight_path %>
+        </div>
+      </div>
+      <div class="card">
+
+          <h4>Mes vols</h4>
+
+        <p><%= @flights.count %> à venir</p>
+        <div class="home-index-card2-button">
+          <%= link_to "Voir", flights_path %>
+        </div>
+      </div>
+    </div>
+    <div class="cards-row">
+      <div class="card">
+
+          <h4>Ma To Do</h4>
+
+        <p><%= @tasks.count %> éléments</p>
+        <div class="home-index-card2-button">
+          <%= link_to "Voir", tasks_path %>
+        </div>
+      </div>
+      <div style="width: 150px; height: 0;"></div>
+    </div>
+  </div>
+</div>
