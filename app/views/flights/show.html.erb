@@ -26,22 +26,38 @@
     <div class="flight-show-alert-title">
       <p>Alertes</p>
     </div>
+
     <div class="flight-show-alert-card-container">
-      <% @alerts.each do |alert| %>
-      <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote" >
+  <% @alerts.each do |alert| %>
+    <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
+      <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
         <i class="fa-solid fa-triangle-exclamation"></i>
         <%= render 'alerts/alert', alert: alert %>
       </div>
-      <div class="flight-show-alert-card-vote show-form-hidden">
-        <button>
-          <i class="fa-solid fa-thumbs-up" data-display-alert-form-target="upVote"></i>
+
+      <div class="flight-show-alert-card-vote show-form-hidden"
+           data-controller="vote"
+           data-vote-id-value="<%= alert.id %>">
+        <button data-action="click->vote#upvote">
+          <i class="fa-solid fa-thumbs-up"></i>
         </button>
-        <button>
-          <i class="fa-solid fa-thumbs-down" data-display-alert-form-target="downVote"></i>
+        <button data-action="click->vote#downvote">
+          <i class="fa-solid fa-thumbs-down"></i>
         </button>
       </div>
-      <% end %>
     </div>
+  <% end %>
+</div>
+
+
+
+
+
+
+
+
+
+
     <div class="flight-show-alert-form-display">
          <div class="flight-show-alert-form show-form-hidden" data-display-alert-form-target="togglableElement">
           <%= render "alerts/form" %>

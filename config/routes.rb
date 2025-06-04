@@ -9,9 +9,17 @@ Rails.application.routes.draw do
 
 
   resources :flights do
-    resources :alerts
+   resources :alerts, only: [:new, :create, :index]
   end
+
   resources :tasks
+
+  resources :alerts, only: [:show, :edit, :update, :destroy] do
+    member do
+      patch :upvote
+      patch :downvote
+    end
+  end
 
   # Defines the root path route ("/")
 

@@ -7,5 +7,6 @@ class Alert < ApplicationRecord
 
   joins(:flight).where(flights: { airport: airport })
                 .where(flights: { takeoff_time: start_of_day..end_of_day })
-}
+  }
+
 end
