@@ -86,4 +86,8 @@
   <%= link_to "Modifier", edit_flight_path(@flight)%>
   <%= link_to "Supprimer", flight_path(@flight),
                             data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>
+  <%= render "alerts/form" %>
 </div>
+<%= @alerts.each do |alert| %>
+  <p><%= render 'alerts/alert', alert: alert %></p>
+<% end %>

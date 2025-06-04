@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
 
 
-  resources :flights
+  resources :flights do
+    resources :alerts
+  end
   resources :tasks
 
   # Defines the root path route ("/")
