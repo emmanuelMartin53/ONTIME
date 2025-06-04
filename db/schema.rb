@@ -32,7 +32,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_03_143653) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "duration_second"
-    t.datetime "arrival_time_wanted"
+    t.integer "arrival_time_wanted"
     t.integer "mobility_choice"
     t.integer "estimated_wait"
     t.boolean "valise"
