@@ -12,6 +12,8 @@ class FlightsController < ApplicationController
   def show
     @flight = Flight.find(params[:id])
     @final_timing = final_time(@flight)
+    @alert = Alert.new
+    @alerts = Alert.from_airport_and_date(@flight.airport,@flight.takeoff_time )
   end
 
   def new
