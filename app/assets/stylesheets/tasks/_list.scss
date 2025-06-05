@@ -119,3 +119,35 @@
 .Avant-de-partir {
   background-color: $Avantdepartir;
 }
+
+.deletetask-Administratif {
+  padding: 9px 16px 9px 15px;
+  background-color: $Administratif;
+  border-radius: 9px;
+  margin-left: -40px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.deletetask-Ma-valise {
+  padding: 9px 16px 9px 15px;
+  background-color: $Mavalise;
+  border-radius: 9px;
+  margin-left: -40px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+.deletetask-Avant-de-partir {
+  padding: 9px 16px 9px 15px;
+  background-color: $Avantdepartir;
+  border-radius: 9px;
+  margin-left: -40px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.form-check {
+  width: 317px;
+}
