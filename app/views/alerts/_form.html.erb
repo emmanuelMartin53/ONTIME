@@ -1,4 +1,6 @@
-<%= simple_form_for [@flight, @alert] do |f| %>
-  <%= f.input :content, label: "Signalement" %>
-  <%= f.button :submit, "Signaler" %>
-<% end %>
+<div class="show-flight-alert-form">
+  <%= simple_form_for [@flight, @alert] do |f| %>
+    <%= f.input :content, label: "Signalement" %>
+    <%= f.button :submit, "Signaler" %>
+  <% end %>
+</div>

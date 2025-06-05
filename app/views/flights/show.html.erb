@@ -1,93 +1,124 @@
 <div class="flight-show-title">
-  <h1>Mon vol vers <br> <%= @flight.destination.capitalize %></h1>
+    <h1>Mon vol vers <br> <%= @flight.destination.capitalize %></h1>
 </div>
 
 <div class="flight-show-task-container">
-  <div class="flight-show-task-title">
-    <p>Mes tâches</p>
+    <div class="flight-show-task-title">
+      <p>Mes tâches</p>
+    </div>
+    <div class="flight-show-task-link">
+      <div class="flight-show-task-link-items">
+        <%= link_to "Administratif"%>
+        <span></span>
+      </div>
+      <div class="flight-show-task-link-items">
+        <%= link_to "Ma valise"%>
+        <span></span>
+      </div>
+      <div class="flight-show-task-link-items">
+        <%= link_to "Avant de partie" %>
+        <span></span>
+      </div>
+    </div>
+</div>
+
+<div class="flight-show-alert-container"  data-controller="display-alert-form">
+    <div class="flight-show-alert-title">
+      <p>Alertes</p>
+    </div>
+
+    <div class="flight-show-alert-card-container">
+  <% @alerts.each do |alert| %>
+    <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
+      <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
+        <i class="fa-solid fa-triangle-exclamation"></i>
+        <%= render 'alerts/alert', alert: alert %>
+      </div>
+
+      <div class="flight-show-alert-card-vote show-form-hidden"
+           data-controller="vote"
+           data-vote-id-value="<%= alert.id %>">
+        <button data-action="click->vote#upvote">
+          <i class="fa-solid fa-thumbs-up"></i>
+        </button>
+        <button data-action="click->vote#downvote">
+          <i class="fa-solid fa-thumbs-down"></i>
+        </button>
+      </div>
+    </div>
+  <% end %>
   </div>
-  <div class="flight-show-task-link">
-    <div class="flight-show-task-link-items">
-      <%= link_to "Administratif"%>
-      <span></span>
+
+    <div class="flight-show-alert-form-display">
+         <div class="flight-show-alert-form show-form-hidden" data-display-alert-form-target="togglableElement">
+          <%= render "alerts/form" %>
+        </div>
+        <button data-action="click->display-alert-form#switch">
+          <p class="" data-display-alert-form-target="togglableElementPlus"> + </p>
+          <p class="show-form-hidden" data-display-alert-form-target="togglableElementMoins"> - </p>
+        </button>
+
     </div>
-    <div class="flight-show-task-link-items">
-      <%= link_to "Ma valise"%>
-      <span></span>
-    </div>
-    <div class="flight-show-task-link-items">
-      <%= link_to "Avant de partie" %>
-      <span></span>
-    </div>
-  </div>
 </div>
 
 <div class="flight-show-main-card-container">
-  <div class="flight-show-main-card-info">
-    <div class="flight-show-main-card">
-      <h2>Départ de chez vous</h2>
-      <p>(au plus tard)</p>
-      <h3><%= @final_timing %></h3>
+    <div class="flight-show-main-card-info">
+      <div class="flight-show-main-card">
+        <h2>Départ de chez vous</h2>
+        <p>(au plus tard)</p>
+        <h3><%= @final_timing %></h3>
+      </div>
+      <div class="flight-show-main-card">
+        <h2>Décollage à</h2>
+        <p>(au plus tard)</p>
+        <h3><%= @flight.takeoff_time.strftime("%H:%M")%></h3>
+      </div>
     </div>
-    <div class="flight-show-main-card">
-      <h2>Décollage à</h2>
-      <p>(au plus tard)</p>
-      <h3><%= @flight.takeoff_time.strftime("%H:%M")%></h3>
+    <div class="flight-show-main-card-link">
+      <%= link_to "C'est parti !" %>
     </div>
-  </div>
-  <div class="flight-show-main-card-link">
-    <%= link_to "C'est parti !" %>
-  </div>
-  <div class="flight-show-map_container">
+    <div class="flight-show-map_container">
 
-<iframe
-  width="400"
-  height="300"
-  style="border:0"
-  loading="lazy"
-  allowfullscreen
-  referrerpolicy="no-referrer-when-downgrade"
-  src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %>
-    &q=<%= @flight.destination%> ">
-</iframe>
+    <iframe
+      width="400"
+      height="300"
+      style="border:0"
+      loading="lazy"
+      allowfullscreen
+      referrerpolicy="no-referrer-when-downgrade"
+      src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %>
+        &q=<%= @flight.destination%> ">
+    </iframe>
 
-  </div>
+    </div>
 </div>
-
-
 
 <div class="flight-show-detail-main-container">
-  <div class="flight-show-detail-container">
-    <h3>Information sur votre vol</h3>
-    <div class="flight-show-detail-info">
-      <p> Terminal : <%= @flight.terminal  %></p>
-      <p> Aéroport : <%= @flight.airport  %></p>
-      <h6>N° vol : <%= @flight.flight_number %> </h6>
-      <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
-      <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
-      <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
-      <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
-      <% if @flight.duration_second.present? %>
-          <% hours = @flight.duration_second / 3600 %>
-          <% minutes = (@flight.duration_second % 3600) / 60 %>
-          <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
-        <% else %>
-          <p>Durée du trajet non disponible.</p>
-        <% end %>
-      <p>Nombre de vol prévu sur votre terminal au même crenau : <%= @flight.estimated_wait %> </p>
+    <div class="flight-show-detail-container">
+      <h3>Information sur votre vol</h3>
+      <div class="flight-show-detail-info">
+        <p> Terminal : <%= @flight.terminal  %></p>
+        <p> Aéroport : <%= @flight.airport  %></p>
+        <h6>N° vol : <%= @flight.flight_number %> </h6>
+        <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
+        <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
+        <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
+        <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
+        <% if @flight.duration_second.present? %>
+            <% hours = @flight.duration_second / 3600 %>
+            <% minutes = (@flight.duration_second % 3600) / 60 %>
+            <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
+          <% else %>
+            <p>Durée du trajet non disponible.</p>
+          <% end %>
+        <p>Nombre de vol prévu sur votre terminal au même crenau : <%= @flight.estimated_wait %> </p>
 
+      </div>
     </div>
-  </div>
 </div>
-
 
 <div class="flight-show-button">
-
-  <%= link_to "Modifier", edit_flight_path(@flight)%>
-  <%= link_to "Supprimer", flight_path(@flight),
-                            data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>
-  <%= render "alerts/form" %>
+    <%= link_to "Modifier", edit_flight_path(@flight)%>
+    <%= link_to "Supprimer", flight_path(@flight),
+                              data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>
 </div>
-<%= @alerts.each do |alert| %>
-  <p><%= render 'alerts/alert', alert: alert %></p>
-<% end %>
