@@ -7,8 +7,9 @@
               wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value:ENV["MAPBOX_API_KEY"]}},
               label: "Adresse de départ de l’utilisateur" %>
   <%= f.input :valise, as: :boolean %>
+  <%= f.input :international, as: :boolean, label: "Vol vers l'international ?" %>
   <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Votre moyen de locomotion" %>
-  <%= f.input :arrival_time_wanted, label: "Combien de temps avant votre vol voulez vous être à votre porte d'embarquement" %>
+  <%= f.input :arrival_time_wanted, label: "Combien de MINUTES avant votre vol voulez vous être à votre porte d'embarquement" %>
 
   <%= f.button :submit, "Créer le vol" %>
 <% end %>

@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-	static values = { id: Number };
+	static values = { id: Number, user: Number };
 
 	connect() {
 		console.log("vote connect");
@@ -10,22 +10,28 @@ export default class extends Controller {
 	async upvote() {
 		console.log(this.idValue);
 
-		const response = await fetch(`/alerts/${this.idValue}/upvote`, {
-			method: "PATCH",
-			headers: { Accept: "application/json" },
-		});
+		const response = await fetch(
+			`/alerts/${this.idValue}/upvote?user=${this.userValue}`,
+			{
+				method: "PATCH",
+				headers: { Accept: "application/json" },
+			}
+		);
 
 		if (response.ok) {
 			const data = await response.json();
-			console.log(data.note);
+			console.log(data);
 		}
 	}
 
 	async downvote() {
-		const response = await fetch(`/alerts/${this.idValue}/downvote`, {
-			method: "PATCH",
-			headers: { Accept: "application/json" },
-		});
+		const response = await fetch(
+			`/alerts/${this.idValue}/downvote?user=${this.userValue}`,
+			{
+				method: "PATCH",
+				headers: { Accept: "application/json" },
+			}
+		);
 
 		if (response.ok) {
 			const data = await response.json();
