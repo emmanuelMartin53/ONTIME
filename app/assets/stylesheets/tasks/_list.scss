@@ -1,0 +1,121 @@
+.accordion-container {
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.app-title {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-title h1 {
+  font-size: 28px;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+.app-title p {
+  color: #666;
+  font-size: 16px;
+  margin: 0;
+}
+
+.accordion {
+  margin-bottom: 15px;
+}
+
+.accordion-item {
+  overflow: hidden;
+  border: none;
+}
+
+.accordion-button-Administratif {
+  color: black !important;
+  border: solid !important;
+  border-color: $Administratif !important;
+  font-weight: bold;
+  border-radius: 12px !important;
+}
+
+.accordion-button-Administratif:not(.collapsed) {
+  background-color: white;
+  border: solid !important;
+  border-color: $Administratif !important;
+  border-radius: 12px !important;
+}
+
+.accordion-button-Avant-de-partir {
+  color: black !important;
+  border: solid !important;
+  border-color: $Avantdepartir !important;
+  font-weight: bold;
+  border-radius: 12px !important;
+}
+
+.accordion-button-Avant-de-partir:not(.collapsed) {
+  background-color: white;
+  border: solid !important;
+  border-color: $Avantdepartir !important;
+  border-radius: 12px !important;
+}
+
+.accordion-button-Ma-valise {
+  color: black !important;
+  border: solid !important;
+  border-color: $Mavalise !important;
+  font-weight: bold;
+  border-radius: 12px !important;
+}
+
+.accordion-button-Ma-valise:not(.collapsed) {
+  background-color: white;
+  border: solid !important;
+  border-color: $Mavalise !important;
+  border-radius: 12px !important;
+}
+
+.accordion-body {
+  background-color: white;
+}
+
+.form-check-input.is-valid ~ .form-check-label {
+  color: white;
+}
+
+.form-check-input.is-valid {
+  border-color: white;
+}
+
+.form-check-input.is-valid:checked {
+  background-color: #ffffff00;
+}
+
+.form-check-input.is-valid:focus {
+  box-shadow: 0 0 0 0rem rgba(0, 0, 0, 0);
+}
+
+.accordion-button:focus {
+  box-shadow: none;
+}
+
+.task_content {
+  border-radius: 12px;
+}
+
+.accordion-item fieldset {
+  border-radius: 14px;
+}
+
+.Administratif {
+  background-color: $Administratif;
+}
+
+.Ma-valise {
+  background-color: $Mavalise;
+}
+
+.Avant-de-partir {
+  background-color: $Avantdepartir;
+}
