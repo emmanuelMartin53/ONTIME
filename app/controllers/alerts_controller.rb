@@ -1,5 +1,5 @@
 class AlertsController < ApplicationController
-  
+
   protect_from_forgery with: :null_session, only: [:upvote, :downvote]
 
   def index
@@ -99,7 +99,7 @@ class AlertsController < ApplicationController
 
     private
 
-  def alert_params
+  def alerts_params
     params.require(:alert).permit(:content)
   end
 
