@@ -1,9 +1,18 @@
 <div class="container">
-  <div class="image-avatar">
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-  </div>
+
   <div class="flight-index-title">
-    <h1>Bienvenue <%= @user.first_name %> !</h1>
+    <% if user_signed_in? %>
+      <div class="image-avatar">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+        <% end %>
+      </div>
+      <div class="title">
+      <h1>Bienvenue <%= current_user.first_name %> !</h1>
+    <% else %>
+      <h1>Bienvenue Anonymous !</h1>
+    <% end %>
+      </div>
   </div>
 
 
@@ -47,6 +56,7 @@
 
           <h4>Mes vols</h4>
 
+        <p><%= @flights.count %> à venir</p>
         <div class="home-index-card2-button">
           <%= link_to "Voir", flights_path %>
         </div>
