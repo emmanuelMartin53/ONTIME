@@ -2,7 +2,10 @@
 
   <%= f.input :flight_number, label: "Numéro de vol" %>
 
-  <%= f.input :user_departure_address, label: "Adresse de départ de l’utilisateur" %>
+  <%= f.input :user_departure_address,
+              input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
+              wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value:ENV["MAPBOX_API_KEY"]}},
+              label: "Adresse de départ de l’utilisateur" %>
   <%= f.input :valise, as: :boolean %>
   <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Votre moyen de locomotion" %>
   <%= f.input :arrival_time_wanted, label: "Combien de temps avant votre vol voulez vous être à votre porte d'embarquement" %>

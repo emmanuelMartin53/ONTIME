@@ -87,7 +87,7 @@
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %>
-        &q=<%= @flight.destination%> ">
+        &q=<%= @flight.destination%>&zoom=4 ">
     </iframe>
 
     </div>
