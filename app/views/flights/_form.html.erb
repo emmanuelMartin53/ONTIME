@@ -11,8 +11,9 @@
                           wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value:ENV["MAPBOX_API_KEY"]}},
                           label: "Adresse de départ" %>
               <%= f.input :valise, as: :boolean %>
-              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Moyen de locomotion" %>
-              <%= f.input :arrival_time_wanted, label: "Quand aimeriez-vous être à votre porte d’embarquement par rapport à l’heure de départ de votre vol ?" %>
+              <%= f.input :international, as: :boolean %>
+              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Votre moyen de locomotion" %>
+              <%= f.input :arrival_time_wanted, label: "Combien de temps en minutes avant votre vol voulez vous être à votre porte d'embarquement" %>
               <div class="d-grid gap-2 mt-3 py-3">
                   <%= f.button :submit, "Créer le vol", class: "btn btn-primary text-white py-3 rounded-pill" %>
               </div>
