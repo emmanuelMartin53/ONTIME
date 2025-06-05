@@ -1,3 +1,4 @@
+// ------------------------------------------------------------------TITLE
 .flight-show-title {
 	display: flex;
 	justify-content: center;
@@ -9,7 +10,7 @@
 		font-weight: 800;
 	}
 }
-
+// ------------------------------------------------------------------TACHES
 .flight-show-task-container {
 	display: flex;
 	flex-direction: column;
@@ -55,6 +56,97 @@
 	}
 }
 
+// ------------------------------------------------------------------ALERTES
+.flight-show-alert-container {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.flight-show-alert-title {
+	display: flex;
+	width: 300px;
+	justify-content: flex-start;
+}
+
+.flight-show-alert-card-container {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.flight-show-alert-card {
+	cursor: pointer;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 8px;
+	height: 40px;
+	width: 260px;
+	background-color: $fond-card;
+	border: $blue 2px solid;
+	border-radius: 10px;
+	p {
+		margin: 0;
+	}
+}
+
+.flight-show-alert-card-vote {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	gap: 30px;
+	button {
+		border: none;
+		border-radius: 5px;
+		background-color: $fond-button;
+		width: 40px;
+		height: 40px;
+	}
+	i {
+		font-size: 24px;
+		transition: ease-out 0.2s;
+	}
+	button:hover i {
+		font-size: 20px;
+	}
+}
+
+.flight-show-alert-form-display {
+	padding: 20px 0;
+	button {
+		height: 40px;
+		width: 260px;
+		border: none;
+		border-radius: 5px;
+		background-color: $fond-button;
+	}
+
+	p {
+		font-size: 26px;
+		margin-bottom: 8px;
+	}
+}
+
+.show-form-hidden {
+	display: none;
+}
+
+.show-flight-alert-form {
+	label[for="alert_content"] {
+	}
+
+	input#alert_content {
+		border: 2px solid $blue;
+	}
+	input[type="submit"] {
+		align-items: center;
+		border: solid 1px black;
+	}
+	/* style du bouton "Signaler" */
+}
+// ------------------------------------------------------------------HORAIRES
 .flight-show-main-card-container {
 	display: flex;
 	flex-direction: column;
@@ -86,6 +178,7 @@
 		font-size: 32;
 	}
 }
+
 .flight-show-main-card-link {
 	a {
 		display: flex;
@@ -99,7 +192,7 @@
 		border-radius: 0 0 15px 15px;
 	}
 }
-
+// ------------------------------------------------------------------MAP
 .flight-show-map_container {
 	position: absolute;
 	top: 100px;
@@ -108,6 +201,8 @@
 	background-color: rgba(76, 202, 221, 0.622);
 	z-index: -1;
 }
+
+// ------------------------------------------------------------------DETAILS VOL
 .flight-show-detail-main-container {
 	display: flex;
 	justify-content: center;
@@ -130,13 +225,13 @@
 	flex-direction: column;
 	align-items: flex-start;
 }
-
+// ------------------------------------------------------------------BUTTON
 .flight-show-button {
 	display: flex;
 	flex-direction: column;
 	gap: 16px;
 	align-items: center;
-	height: 40px;
+	height: max-content;
 	padding: 50px 0;
 	a {
 		display: flex;
