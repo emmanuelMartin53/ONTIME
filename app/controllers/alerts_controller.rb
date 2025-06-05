@@ -1,16 +1,22 @@
 class AlertsController < ApplicationController
-
+  
   protect_from_forgery with: :null_session, only: [:upvote, :downvote]
 
+  def index
+    @alerts = Alert.all
+  end
+
+
   def show
-      @alert = Alert.find(params[:id])
+    @alert = Alert.find(params[:id])
   end
 
   def new
-      @alert = Alert.new
+    @alert = Alert.new
   end
 
   def create
+
     @alert = Alert.new(alerts_params)
     @alert.flight = Flight.find(params[:flight_id])
     @alert.user = current_user
@@ -20,6 +26,7 @@ class AlertsController < ApplicationController
     else
       redirect_to @flight, notice: "Signalement raté"
     end
+
   end
 
   def edit
@@ -92,8 +99,9 @@ class AlertsController < ApplicationController
 
     private
 
-    def alerts_params
-      params.require(:alert).permit(:content)
-    end
+  def alert_params
+    params.require(:alert).permit(:content)
+  end
+
 
 end

@@ -1,9 +1,18 @@
 <div class="container">
-  <div class="image-avatar">
-    <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
-  </div>
+
   <div class="flight-index-title">
-    <h1>Bienvenue <%= @user.first_name %> !</h1>
+    <% if user_signed_in? %>
+      <div class="image-avatar">
+        <% if current_user.photo.attached? %>
+          <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
+        <% else %>
+          <%= image_tag "https://static.vecteezy.com/system/resources/previews/024/983/914/non_2x/simple-user-default-icon-free-png.png", class: "avatar", alt: "default avatar" %>
+        <% end %>
+      </div>
+      <div class="title">
+        <h1>Bienvenue <%= current_user.first_name %> !</h1>
+      </div>
+    <% end %>
   </div>
 
 
