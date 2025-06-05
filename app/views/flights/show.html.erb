@@ -102,7 +102,7 @@
       <h3>Information sur votre vol</h3>
       <div class="flight-show-detail-info">
         <p> Terminal : <%= @flight.terminal  %></p>
-        <p> Aéroport : <%= @flight.airport  %></p>
+        <p> Aéroport d'arrivée : <%= @flight.airport  %></p>
         <h6>N° vol : <%= @flight.flight_number %> </h6>
         <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
         <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
