@@ -91,6 +91,7 @@
       referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %> &q=Aeroport <%= @flight.destination%>&zoom=4 ">
 
+
     </iframe>
 
     </div>
@@ -128,6 +129,7 @@
 </div>
 
 <div class="flight-show-button">
+    <%= link_to "Voir autre vol", flights_path(@flights)%>
     <%= link_to "Modifier", edit_flight_path(@flight)%>
     <%= link_to "Supprimer", flight_path(@flight),
                               data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>
