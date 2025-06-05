@@ -45,7 +45,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_155418) do
   create_table "alerts", force: :cascade do |t|
     t.bigint "flight_id", null: false
     t.string "content"
-    t.integer "note"
+    t.integer "note", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["flight_id"], name: "index_alerts_on_flight_id"
