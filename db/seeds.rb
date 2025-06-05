@@ -6,7 +6,7 @@ Category.all.destroy_all
 require "open-uri"
 
 @user = User.new(email:"charlie@gmail.com", password:"ouioui", first_name:"Charlie" )
-file = URI.parse('https://resize.elle.fr/original/var/plain_site/storage/images/deco/reportages/visites-maisons/un-appartement-de-75m2-aux-allures-douces-et-retro/97678096-1-fre-FR/Un-appartement-de-75m2-aux-allures-douces-et-retro.jpg').open
+file = URI.parse('https://raw.githubusercontent.com/RubberDuckDebugging/rubberduckdebugging.github.io/master/images/rubberducky.png').open
 @user.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
 @user.save
 puts "user created"
