@@ -93,6 +93,7 @@
 }
 
 .flight-show-alert-card-vote {
+	margin-top: 10px;
 	display: flex;
 	justify-content: center;
 	gap: 30px;
@@ -130,6 +131,20 @@
 
 .show-form-hidden {
 	display: none;
+}
+
+.show-flight-alert-form {
+	label[for="alert_content"] {
+	}
+
+	input#alert_content {
+		border: 2px solid $blue;
+	}
+	input[type="submit"] {
+		align-items: center;
+		border: solid 1px black;
+	}
+	/* style du bouton "Signaler" */
 }
 // ------------------------------------------------------------------HORAIRES
 .flight-show-main-card-container {
