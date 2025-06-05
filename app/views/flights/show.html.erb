@@ -35,16 +35,19 @@
         <%= render 'alerts/alert', alert: alert %>
       </div>
 
-      <div class="flight-show-alert-card-vote show-form-hidden"
-           data-controller="vote"
-           data-vote-id-value="<%= alert.id %>">
-        <button data-action="click->vote#upvote">
-          <i class="fa-solid fa-thumbs-up"></i>
-        </button>
-        <button data-action="click->vote#downvote">
-          <i class="fa-solid fa-thumbs-down"></i>
-        </button>
-      </div>
+      <% unless alert.user == current_user %>
+        <div class="flight-show-alert-card-vote show-form-hidden"
+            data-controller="vote"
+            data-vote-id-value="<%= alert.id %>"
+            data-vote-user-value="<%= current_user.id %>">
+          <button data-action="click->vote#upvote">
+            <i class="fa-solid fa-thumbs-up"></i>
+          </button>
+          <button data-action="click->vote#downvote">
+            <i class="fa-solid fa-thumbs-down"></i>
+          </button>
+        </div>
+      <% end %>
     </div>
   <% end %>
   </div>
@@ -86,8 +89,8 @@
       loading="lazy"
       allowfullscreen
       referrerpolicy="no-referrer-when-downgrade"
-      src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %>
-        &q=<%= @flight.destination%>&zoom=4 ">
+      src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %> &q=Aeroport <%= @flight.destination%>&zoom=4 ">
+
     </iframe>
 
     </div>
@@ -102,7 +105,7 @@
         <h6>N° vol : <%= @flight.flight_number %> </h6>
         <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
         <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
-        <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %>h</p>
+        <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %> min</p>
         <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
         <% if @flight.duration_second.present? %>
             <% hours = @flight.duration_second / 3600 %>
@@ -112,6 +115,13 @@
             <p>Durée du trajet non disponible.</p>
           <% end %>
         <p>Nombre de vol prévu sur votre terminal au même crenau : <%= @flight.estimated_wait %> </p>
+        <%  if @flight.valise  %>
+        <p>Vous avez une valise</p>
+        <% end %>
+        <%  if @flight.international  %>
+        <p>C'est un vol vers l'internationnal</p>
+        <% end %>
+
 
       </div>
     </div>

@@ -10,7 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_04_155418) do
+
+ActiveRecord::Schema[7.1].define(version: 2025_06_05_133208) do
+
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -48,7 +50,9 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_155418) do
     t.integer "note", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["flight_id"], name: "index_alerts_on_flight_id"
+    t.index ["user_id"], name: "index_alerts_on_user_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -73,6 +77,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_155418) do
     t.integer "mobility_choice"
     t.integer "estimated_wait"
     t.boolean "valise"
+    t.boolean "international"
     t.index ["user_id"], name: "index_flights_on_user_id"
   end
 
@@ -102,10 +107,25 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_04_155418) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "votes", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "alert_id", null: false
+    t.boolean "up"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["alert_id"], name: "index_votes_on_alert_id"
+    t.index ["user_id"], name: "index_votes_on_user_id"
+  end
+
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+
   add_foreign_key "alerts", "flights"
+  add_foreign_key "alerts", "users"
   add_foreign_key "flights", "users"
   add_foreign_key "tasks", "flights"
   add_foreign_key "tasks", "users"
+  add_foreign_key "votes", "alerts"
+  add_foreign_key "votes", "users"
 end

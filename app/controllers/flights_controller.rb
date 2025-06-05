@@ -25,7 +25,7 @@ class FlightsController < ApplicationController
       api_data = FlightData.new().fetch_flight_data(flight_number)
       duration_second_value = DurationTraject.new().duration_trajet(api_data["departure"]["airport"],params[:flight][:user_departure_address],params[:flight][:mobility_choice] )
       estimated_wait_value = EstimatedWait.new().estimated_wait(api_data["departure"]["iata"],Time.parse(api_data["departure"]["scheduled"]).strftime("%Y-%m-%d"),Time.parse(api_data["departure"]["scheduled"]).strftime("%H:%M"),api_data["departure"]["terminal"])
-    
+
     #debugger
     if api_data.present?
       @flight = Flight.new(
@@ -66,7 +66,8 @@ class FlightsController < ApplicationController
 
   def flight_params
     params.require(:flight).permit(:flight_number, :airport, :terminal, :destination,
-                                   :takeoff_time, :landing_time, :user_departure_address, :mobility_choice, :valise, :photo)
+                                   :takeoff_time, :landing_time, :user_departure_address,:arrival_time_wanted, :mobility_choice, :photo, :valise)
+
   end
 
   def time_string_to_minutes(decollage)
@@ -81,22 +82,35 @@ class FlightsController < ApplicationController
   end
 
   def final_time(flight)
+    # Facteur d'allongement des durées si vol international
+    facteur_international = flight.international ? 1.5 : 1.0
 
-    heure_decollage_en_minute = time_string_to_minutes(flight.takeoff_time.strftime("%H:%M"))
+    # Convertit l'heure de décollage en minutes depuis minuit
+    heure_decollage_en_min = time_string_to_minutes(flight.takeoff_time.strftime("%H:%M"))
 
-    fermeture_porte = 40
+    fermeture_porte = 30
     affluence = flight.estimated_wait
-    temps_trajet = flight.duration_second / 60
-    security = [10 + affluence * 2, 90].min
 
-    valise_marge = flight.valise ? [5 + affluence, 20].min : 0
+    # Applique le facteur international aux durées variables
+    temps_trajet = (flight.duration_second / 60.0) * facteur_international
+    security = [ (10 + affluence * 2) * facteur_international, 90 ].min
+    valise_marge = flight.valise ? [ (5 + affluence) * facteur_international, 20 ].min : 0
 
-    timing = fermeture_porte + temps_trajet + security + valise_marge
+    avance_porte_souhaitee = flight.arrival_time_wanted
 
-    heure_depart_ideal = heure_decollage_en_minute - timing
+    # Calcul du timing total avant décollage
+    timing_total = fermeture_porte + temps_trajet + security + valise_marge + avance_porte_souhaitee
 
+    # Heure idéale de départ en minutes depuis minuit
+    heure_depart_ideal = heure_decollage_en_min - timing_total
+
+    # Ajuste si négatif (avant minuit)
+    heure_depart_ideal += 24 * 60 if heure_depart_ideal < 0
+
+    # Convertit les minutes en format HH:MM
     minutes_to_time_string(heure_depart_ideal)
   end
+
 
 
 
