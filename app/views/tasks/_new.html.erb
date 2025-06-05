@@ -1,6 +1,6 @@
-<div class="addbar-todo d-flex justify-content-center">
-  <%= simple_form_for @task, html: { class: "horizontal-form input-group flex-nowrap w-75" } do |f| %>
-    <%= f.input :category_id, collection: Category.all, label: false, prompt: "Catégorie", class: "form-control" %>
+<div class="addbar-todo style-2 d-flex justify-content-center">
+  <%= simple_form_for @task, html: { class: "horizontal-form input-group flex-nowrap w-100" } do |f| %>
+    <%= f.input :category_id, collection: Category.all, label: false, prompt: "...", class: "form-control", input_html: {class: "category-select"} %>
     <%= f.input :content, label: false, class: "form-control" %>
     <%= f.submit '+', class: "form-control newsubmit"  %>
   <% end %>
