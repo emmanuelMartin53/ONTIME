@@ -1,8 +1,9 @@
-<h1 class= "MainTitle">Ma To Do</h1>
-
-<div class="taskcontainer">
+<div class="accordion-container">
+  <div class="app-title">
+    <h1>Ma To Do</h1>
+    <p>Votre starter pack voyage</p>
+  </div>
   <%= render 'new', task: @task %>
-
   <% if @tasks.empty? %>
     <p>Vous n'avez pas encore de tâches dans votre do list...</p>
   <% else %>
