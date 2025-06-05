@@ -6,7 +6,7 @@ require 'uri'
 class FlightsController < ApplicationController
 
   def index
-    @flights= Flight.all
+    @flights= Flight.where('takeoff_time > ?', Time.now)
   end
 
   def show
@@ -66,7 +66,7 @@ class FlightsController < ApplicationController
 
   def flight_params
     params.require(:flight).permit(:flight_number, :airport, :terminal, :destination,
-                                   :takeoff_time, :landing_time, :user_departure_address, :mobility_choice, :valise)
+                                   :takeoff_time, :landing_time, :user_departure_address, :mobility_choice, :valise, :photo)
   end
 
   def time_string_to_minutes(decollage)
