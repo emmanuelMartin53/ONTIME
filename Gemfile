@@ -53,6 +53,7 @@ gem "sassc-rails"
 gem 'cloudinary'
 gem "geocoder"
 gem "cloudinary"
+gem "inline_svg"
 
 group :development, :test do
   gem "dotenv-rails"
