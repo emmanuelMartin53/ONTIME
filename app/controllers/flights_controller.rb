@@ -6,7 +6,7 @@ require 'uri'
 class FlightsController < ApplicationController
 
   def index
-    @flights= Flight.where('takeoff_time > ?', Time.now)
+    @flights= current_user.flights
   end
 
   def show
@@ -41,7 +41,8 @@ class FlightsController < ApplicationController
         arrival_time_wanted: params[:flight][:arrival_time_wanted],
         duration_second: duration_second_value,
         estimated_wait: estimated_wait_value,
-        valise: params[:flight][:valise]
+        valise: params[:flight][:valise],
+        international: params[:flight][:international]
       )
 
     else

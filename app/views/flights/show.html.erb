@@ -29,6 +29,7 @@
 
     <div class="flight-show-alert-card-container">
   <% @alerts.each do |alert| %>
+
     <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
       <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -40,13 +41,16 @@
             data-controller="vote"
             data-vote-id-value="<%= alert.id %>"
             data-vote-user-value="<%= current_user.id %>">
-          <button data-action="click->vote#upvote">
-            <i class="fa-solid fa-thumbs-up"></i>
+
+          <button data-action="click->vote#upvote" data-vote-target="voteButton" <%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
+            <i class="fa-solid fa-thumbs-up "></i>
           </button>
-          <button data-action="click->vote#downvote">
+          <button data-action="click->vote#downvote" data-vote-target="voteButton"<%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
             <i class="fa-solid fa-thumbs-down"></i>
           </button>
-        </div>
+          </div>
+
+
       <% end %>
     </div>
   <% end %>
@@ -91,6 +95,7 @@
       referrerpolicy="no-referrer-when-downgrade"
       src="https://www.google.com/maps/embed/v1/place?key=<%=ENV["GOOGLE_API_KEY"] %> &q=Aeroport <%= @flight.destination%>&zoom=4 ">
 
+
     </iframe>
 
     </div>
@@ -101,7 +106,7 @@
       <h3>Information sur votre vol</h3>
       <div class="flight-show-detail-info">
         <p> Terminal : <%= @flight.terminal  %></p>
-        <p> Aéroport : <%= @flight.airport  %></p>
+        <p> Aéroport d'arrivée : <%= @flight.airport  %></p>
         <h6>N° vol : <%= @flight.flight_number %> </h6>
         <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
         <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
@@ -128,6 +133,7 @@
 </div>
 
 <div class="flight-show-button">
+    <%= link_to "Voir autre vol", flights_path(@flights)%>
     <%= link_to "Modifier", edit_flight_path(@flight)%>
     <%= link_to "Supprimer", flight_path(@flight),
                               data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>

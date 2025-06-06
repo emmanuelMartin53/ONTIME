@@ -6,6 +6,7 @@ class FlightData
     response = Net::HTTP.get(url)
     data = JSON.parse(response)
 
+
     # Tu peux ici retourner par exemple le premier vol trouvé, ou nil si rien
     data["data"]&.first
     # {"flight_date"=>"2025-06-02", "flight_status"=>"landed",

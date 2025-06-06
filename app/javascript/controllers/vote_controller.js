@@ -2,6 +2,7 @@ import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
 	static values = { id: Number, user: Number };
+	static targets = ["voteButton"];
 
 	connect() {
 		console.log("vote connect");
@@ -22,6 +23,10 @@ export default class extends Controller {
 			const data = await response.json();
 			console.log(data);
 		}
+
+		this.voteButtonTargets.forEach((button) => {
+			button.setAttribute("disabled", "");
+		});
 	}
 
 	async downvote() {
@@ -41,5 +46,8 @@ export default class extends Controller {
 				if (wrapper) wrapper.remove();
 			}
 		}
+		this.voteButtonTargets.forEach((button) => {
+			button.setAttribute("disabled", "");
+		});
 	}
 }
