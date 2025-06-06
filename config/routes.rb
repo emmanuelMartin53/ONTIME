@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :flights do
    resources :alerts, only: [:new, :create, :index]
+   resources :tasks, only: [:index, :create, :new], module: :flights
   end
 
   resources :tasks
