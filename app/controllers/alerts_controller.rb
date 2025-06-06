@@ -40,59 +40,48 @@ class AlertsController < ApplicationController
 
 
   def upvote
-
     alert = Alert.find(params[:id])
     pastVote = Vote.where(user_id: params[:user], alert: alert)
 
     if pastVote.length < 1
 
       @vote = Vote.new()
-      @vote.user_id = params[:user]
+      @vote.user = current_user
       @vote.alert = alert
       @vote.up = true
       @vote.save!
 
-      if alert.flight.user == current_user
-          redirect_to @flight, notice: "Vous ne pouvez pas voter pour vos propre alertes"
-          return
-      end
-
       alert.increment!(:note)
-      respond_to do |format|
-        format.json { render json: { note: alert.note, user:  params[:user] }, status: :ok }
-      end
+
+      redirect_to flight_path(alert.flight)
     end
   end
 
   def downvote
-
-
     alert = Alert.find(params[:id])
     pastVote = Vote.where(user_id: params[:user], alert: alert)
 
     if pastVote.length < 1
       @vote = Vote.new()
-      @vote.user_id = params[:user]
+      @vote.user = current_user
       @vote.alert = alert
       @vote.up = false
       @vote.save!
 
-      if alert.flight.user == params[:user]
-        render json: { error: "Action interdite : vous ne pouvez pas voter sur vos propres alertes" }, status: :forbidden
-
-        return
-      end
       alert.decrement!(:note)
 
       if alert.note <= 0
+        tablesVote = alert.votes
+        tablesVote.update_all(alert_id: nil)
         alert.destroy
         respond_to do |format|
-          format.json { render json: { deleted: true, id: alert.id }, status: :ok }
+          format.turbo_stream do
+            render turbo_stream: turbo_stream.remove("alert_#{alert.id}")
+          end
+          format.html { redirect_to flight_path(alert.flight), notice: "Alerte supprimée"}
         end
       else
-        respond_to do |format|
-          format.json { render json: { note: alert.note }, status: :ok }
-        end
+        redirect_to flight_path(alert.flight)
       end
     end
   end
