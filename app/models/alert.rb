@@ -15,5 +15,4 @@ class Alert < ApplicationRecord
     !self.votes.where(user: current_user).empty?
   end
 
-
 end

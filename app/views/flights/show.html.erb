@@ -29,30 +29,25 @@
 
     <div class="flight-show-alert-card-container">
   <% @alerts.each do |alert| %>
+    <%= turbo_frame_tag dom_id(alert) do%>
+      <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
+        <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <%= render 'alerts/alert', alert: alert %>
+        </div>
 
-    <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
-      <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
-        <i class="fa-solid fa-triangle-exclamation"></i>
-        <%= render 'alerts/alert', alert: alert %>
-      </div>
-
-      <% unless alert.user == current_user %>
-        <div class="flight-show-alert-card-vote show-form-hidden"
-            data-controller="vote"
-            data-vote-id-value="<%= alert.id %>"
-            data-vote-user-value="<%= current_user.id %>">
-
-          <button data-action="click->vote#upvote" data-vote-target="voteButton" <%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
-            <i class="fa-solid fa-thumbs-up "></i>
-          </button>
-          <button data-action="click->vote#downvote" data-vote-target="voteButton"<%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
-            <i class="fa-solid fa-thumbs-down"></i>
-          </button>
+        <% unless alert.user == current_user %>
+          <div class="flight-show-alert-card-vote show-form-hidden">
+              <%= button_to upvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user), method: :patch do  %>
+                <i class="fa-solid fa-thumbs-up "></i>
+              <% end %>
+              <%= button_to downvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user) , method: :patch, turbo: false do  %>
+                <i class="fa-solid fa-thumbs-down"></i>
+              <% end %>
           </div>
-
-
       <% end %>
-    </div>
+       </div>
+    <% end %>
   <% end %>
   </div>
 
