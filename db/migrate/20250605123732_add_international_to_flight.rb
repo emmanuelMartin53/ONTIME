@@ -1,5 +1,5 @@
 class AddInternationalToFlight < ActiveRecord::Migration[7.1]
   def change
-    add_column_null :flights, :international, true
+    add_column :flights, :international, :boolean
   end
 end
