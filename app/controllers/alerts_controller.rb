@@ -99,7 +99,7 @@ class AlertsController < ApplicationController
 
     private
 
-  def alerts_params
+  def alert_params
     params.require(:alert).permit(:content)
   end
 
