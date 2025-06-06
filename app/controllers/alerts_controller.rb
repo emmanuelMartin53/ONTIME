@@ -17,7 +17,7 @@ class AlertsController < ApplicationController
 
   def create
 
-    @alert = Alert.new(alert_params)
+    @alert = Alert.new(alerts_params)
     @alert.flight = Flight.find(params[:flight_id])
     @alert.user = current_user
     @flight = Flight.find(params[:flight_id])
