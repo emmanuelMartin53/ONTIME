@@ -10,9 +10,11 @@
 }
 
 .avatar {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+
 }
 
 .title {
@@ -30,17 +32,19 @@
 }
 
 .next-travel-text {
-	width: 280px;
+  width: 280px;
+  padding-right: 30px;
 }
 
 .home-index-card {
-	display: flex;
-	font-size: 12px;
-	height: 70px;
-	width: 320px;
-	align-items: center;
-	border-radius: 15px;
-	background-color: $fond-card;
+  display: flex;
+  font-size: 12px;
+  height: 70px;
+  width: 320px;
+  align-items: center;
+  border-radius: 15px;
+  background-color: $fond-card;
+  margin-bottom: 12px;
 }
 
 .home-index-card-photo {
@@ -60,38 +64,23 @@
 	}
 }
 
-// .home-index-card-button {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width: 70px;
-//   padding: 0 10px;
-//   a {
-//     background-color: $fond-button;
-//     color: white;
-//     border-radius: 10px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     text-decoration: none;
-//     height: 30px;
-//     width: 50px;
-//   }
-// }
+.icon-ticket-home {
+  margin-right: 12px;
+}
 
 .next-step {
-	text-align: center;
-	color: #71727a;
-	padding: 0px 0px 10px 0px;
-	font-family: "Inter", sans-serif !important;
-	font-size: 12px;
+  text-align: center;
+  color: #71727a;
+  font-family: "Inter", sans-serif !important;
+  font-size: 12px;
 }
 
 .cards-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
+
 }
 
 .cards-row {

@@ -1,7 +1,8 @@
-Flight.all.destroy_all
-Task.all.destroy_all
-User.all.destroy_all
-Category.all.destroy_all
+Alert.destroy_all
+Flight.destroy_all
+Task.destroy_all
+User.destroy_all
+Category.destroy_all
 
 require "open-uri"
 

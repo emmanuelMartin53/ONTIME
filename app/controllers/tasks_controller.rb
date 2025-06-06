@@ -1,25 +1,26 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks
+    @tasks = current_user.tasks.where(flight_id: nil)
     @tasks_grouped = @tasks.group_by(&:category)
-    @admin = Category.find_by(name: "Administratif")
     @task = Task.new
   end
 
   def create
     @task = Task.new(task_params)
     @task.user = current_user
-    @task.save
-    redirect_to tasks_path()
-    # else
-    #   render :new, status: :unprocessable_entity
-    # end
+
+    if @task.save
+      redirect_to tasks_path()
+    else
+      render :new, status: :unprocessable_entity
+    end
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    redirect_to tasks_path
+    redirect_target = params[:return_to].presence || tasks_path
+    redirect_to redirect_target, notice: "Votre tâche a bien été supprimée"
   end
 
 #   def edit

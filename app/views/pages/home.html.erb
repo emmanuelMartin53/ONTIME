@@ -23,14 +23,16 @@
       </div>
       <div class="home-index-card">
         <div class="home-index-card-photo">
-
+          <%= cl_image_tag("paris", version: "1749214394", format: "avif") %>
         </div>
         <div class="home-index-card-info">
           <p><%= @flight.takeoff_time.strftime("%d/%m/%Y") %></p>
           <p><%= @flight.destination %></p>
         </div>
         <div class="home-index-card-button">
-          <%= link_to "Voir", flight_path(@flight) %>
+          <%= link_to flight_path(@flight), class: "ticket-btn" do %>
+            <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-home" %>
+          <% end %>
         </div>
       </div>
     <% else %>
@@ -40,9 +42,7 @@
 
   <div class="next-step">
     <p>Que voulez vous faire aujourd'hui ?</p>
-  </div>
-  <div class="cards-container">
-    <div class="cards-row">
+  </div> <div class="cards-container"> <div class="cards-row">
       <div class="card">
 
           <h6>Ajouter un vol</h6>
