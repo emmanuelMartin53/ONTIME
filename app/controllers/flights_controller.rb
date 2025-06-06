@@ -111,10 +111,6 @@ class FlightsController < ApplicationController
     # Convertit les minutes en format HH:MM
     minutes_to_time_string(heure_depart_ideal)
   end
-
-
-
-
 end
 
 
