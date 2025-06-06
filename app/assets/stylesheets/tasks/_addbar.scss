@@ -92,6 +92,6 @@
   background-color: white !important;
 }
 
-// .category-select option:hover {
-//   background: white;
-// }
+.input:-internal-autofill-selected {
+  background-color: blue;
+}
