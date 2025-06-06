@@ -77,7 +77,17 @@
 }
 
 .accordion-body {
-  background-color: white;
+  margin-top: 6px;
+  border-radius: 12px;
+}
+.accordion__Ma-valise {
+  background-color: $Mavalise;
+}
+.accordion__Administratif {
+  background-color: $Administratif;
+}
+.accordion__Avant-de-partir {
+  background-color: $Avantdepartir;
 }
 
 .form-check-input.is-valid ~ .form-check-label {
@@ -148,6 +158,6 @@
   font-weight: bold;
 }
 
-.form-check {
-  width: 317px;
+.task-line fieldset {
+  margin-bottom: 0px !important;
 }

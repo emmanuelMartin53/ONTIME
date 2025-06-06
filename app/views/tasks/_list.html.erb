@@ -8,9 +8,9 @@
         </h2>
         <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= index %>" data-bs-parent="#accordionFlush<%= index %>">
           <% tasks.each do |task| %>
-            <div class="accordion-body <%= "accordion__#{category.name}" %> p-0">
-              <div class="d-flex justify-content-between align-items-center task-line">
-              <%= simple_form_for task, html: {class: 'mt-3'}, remote: true do |f| %>
+            <div class="accordion-body <%= "accordion__#{category.name.gsub(" ", "-")}" %> p-0">
+              <div class="accordion-flex d-flex justify-content-between align-items-center task-line">
+              <%= simple_form_for task, html: {class: 'mt-2'}, remote: true do |f| %>
                 <%= f.input :content, label: task.content, as: :boolean, checked: task.done,
                   wrapper_html: { class: "mb-0 #{category.name.gsub(" ", "-")} px-3 py-2" } %>
               <% end %>
