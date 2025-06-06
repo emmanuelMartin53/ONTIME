@@ -29,6 +29,7 @@
 
     <div class="flight-show-alert-card-container">
   <% @alerts.each do |alert| %>
+
     <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
       <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
         <i class="fa-solid fa-triangle-exclamation"></i>
@@ -40,13 +41,16 @@
             data-controller="vote"
             data-vote-id-value="<%= alert.id %>"
             data-vote-user-value="<%= current_user.id %>">
-          <button data-action="click->vote#upvote">
-            <i class="fa-solid fa-thumbs-up"></i>
+
+          <button data-action="click->vote#upvote" data-vote-target="voteButton" <%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
+            <i class="fa-solid fa-thumbs-up "></i>
           </button>
-          <button data-action="click->vote#downvote">
+          <button data-action="click->vote#downvote" data-vote-target="voteButton"<%= "disabled" if alert.is_voted_by_user?(current_user)  %> >
             <i class="fa-solid fa-thumbs-down"></i>
           </button>
-        </div>
+          </div>
+
+
       <% end %>
     </div>
   <% end %>

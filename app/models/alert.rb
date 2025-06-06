@@ -11,4 +11,9 @@ class Alert < ApplicationRecord
                 .where(flights: { takeoff_time: start_of_day..end_of_day })
   }
 
+  def is_voted_by_user?(current_user)
+    !self.votes.where(user: current_user).empty?
+  end
+
+
 end

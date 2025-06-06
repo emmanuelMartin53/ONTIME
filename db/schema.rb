@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_05_133208) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_06_092937) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -43,7 +43,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_133208) do
   end
 
   create_table "alerts", force: :cascade do |t|
-    t.bigint "flight_id", null: false
+    t.bigint "flight_id"
     t.string "content"
     t.integer "note", default: 2
     t.datetime "created_at", null: false
@@ -107,7 +107,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_05_133208) do
 
   create_table "votes", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "alert_id", null: false
+    t.bigint "alert_id"
     t.boolean "up"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
