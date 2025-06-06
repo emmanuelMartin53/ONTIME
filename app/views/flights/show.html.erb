@@ -82,7 +82,7 @@
       </div>
     </div>
     <div class="flight-show-main-card-link">
-      <%= link_to "C'est parti !" %>
+      <%= link_to "C'est parti !", "https://www.google.com/maps/dir/?api=1&origin=#{@flight.user_departure_address}&destination=aeroport #{@flight.airport}&travelmode=#{@flight.mobility_choice}", target: "_blank" %>
     </div>
     <div class="flight-show-map_container">
 
