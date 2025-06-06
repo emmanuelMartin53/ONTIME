@@ -5,5 +5,5 @@ class Flight < ApplicationRecord
 
   has_one_attached :photo
 
-  enum :mobility_choice, [ :marche, :voiture, :transit, :vélo ]
+  enum :mobility_choice, [ :a_pied, :voiture, :transport, :vélo ]
 end
