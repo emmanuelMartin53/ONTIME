@@ -7,6 +7,8 @@ class FlightsController < ApplicationController
 
   def index
     @flights= current_user.flights
+    @flightsFutur = @flights.where('takeoff_time > ?', Time.current)
+    @flightsDone = @flights.where('takeoff_time < ?', Time.current)
   end
 
   def show
