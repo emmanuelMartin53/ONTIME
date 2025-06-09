@@ -15,8 +15,12 @@
 
 .navbar {
 	i {
-		font-size: 45px;
+		font-size: 35px;
 	}
+}
+
+.margin-bottom-50 {
+	margin-bottom: 100px;
 }
 
 .navbar-lewagon .navbar-collapse {
@@ -31,9 +35,9 @@
 .navbar-profil-button,
 .navbar-logo {
 	img {
-		height: 50px;
+		height: 40px;
 	}
-	height: 50px;
+	height: 40px;
 	border-radius: 50%;
 	border: none;
 	padding: 0px;
