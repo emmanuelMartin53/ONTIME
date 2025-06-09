@@ -12,7 +12,7 @@
                           label: "Adresse de départ" %>
               <%= f.input :valise, as: :boolean %>
               <%= f.input :international, as: :boolean %>
-              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Votre moyen de locomotion" %>
+              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys.map { |k| [Flight::MOBILITY_LABELS[k], k] }, label: "Votre moyen de locomotion" %>
               <%= f.input :arrival_time_wanted, label: "Combien de temps en minutes avant votre vol voulez vous être à votre porte d'embarquement ?" %>
               <div class="d-grid gap-2 mt-3 py-3">
                   <%= f.button :submit, "Créer le vol", class: "btn btn-primary text-white py-3 rounded-pill" %>
