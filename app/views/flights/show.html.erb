@@ -122,7 +122,7 @@
       <div class="flight-show-detail-info flight-show-detail-toggle"
       data-toggle-information-target="personal">
         <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %> min</p>
-        <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
+        <p>Votre moyen de deplacement : <%= @flight.mobility_choice_label %></p>
         <% if @flight.duration_second.present? %>
             <div class="show-flight-personal-trajet">
               <p><%= "#{@hours } h #{@minutes.to_s.rjust(2, '0')}"%> de trajet à partir de : </p>
