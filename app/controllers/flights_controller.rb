@@ -14,6 +14,8 @@ class FlightsController < ApplicationController
     @final_timing = final_time(@flight)
     @alert = Alert.new
     @alerts = Alert.from_airport_and_date(@flight.airport,@flight.takeoff_time )
+    @hours = @flight.duration_second / 3600
+    @minutes = (@flight.duration_second % 3600) / 60
   end
 
   def new
