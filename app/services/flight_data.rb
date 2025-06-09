@@ -4,6 +4,7 @@ class FlightData
     api_key = ENV["AVIATION_STACK_API_KEY"]
     url = URI("https://api.aviationstack.com/v1/flights?access_key=#{api_key}&flight_iata=#{flight_number}")
     response = Net::HTTP.get(url)
+
     data = JSON.parse(response)
 
 
