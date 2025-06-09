@@ -10,11 +10,10 @@
 }
 
 .avatar {
-  width: 100px;
-  height: 100px;
-  border-radius: 50%;
-  object-fit: cover;
-
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	object-fit: cover;
 }
 
 .title {
@@ -31,20 +30,15 @@
 	align-items: center;
 }
 
-.next-travel-text {
-  width: 280px;
-  padding-right: 30px;
-}
-
 .home-index-card {
-  display: flex;
-  font-size: 12px;
-  height: 70px;
-  width: 320px;
-  align-items: center;
-  border-radius: 15px;
-  background-color: $fond-card;
-  margin-bottom: 12px;
+	display: flex;
+	font-size: 12px;
+	height: 70px;
+	width: 320px;
+	align-items: center;
+	border-radius: 15px;
+	background-color: $fond-card;
+	margin-bottom: 12px;
 }
 
 .home-index-card-photo {
@@ -65,22 +59,21 @@
 }
 
 .icon-ticket-home {
-  margin-right: 12px;
+	margin-right: 12px;
 }
 
 .next-step {
-  text-align: center;
-  color: #71727a;
-  font-family: "Inter", sans-serif !important;
-  font-size: 12px;
+	text-align: center;
+	color: #71727a;
+	font-family: "Inter", sans-serif !important;
+	font-size: 12px;
 }
 
 .cards-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 17px;
-
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 17px;
 }
 
 .cards-row {

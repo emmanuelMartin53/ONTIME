@@ -39,6 +39,7 @@
 		border: $blue 2px solid;
 		border-radius: 10px;
 		background-color: $fond-card;
+		padding: 8px 8px;
 	}
 }
 
@@ -135,8 +136,6 @@
 
 .show-flight-alert-form {
 	margin-bottom: 30px;
-	label[for="alert_content"] {
-	}
 
 	input#alert_content {
 		border: 2px solid $blue;
@@ -291,6 +290,7 @@
 	align-items: center;
 	height: max-content;
 	padding: 70px 0;
+	margin-bottom: 50px;
 	a {
 		display: flex;
 		justify-content: center; /* centre horizontalement */
