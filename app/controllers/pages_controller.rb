@@ -6,4 +6,7 @@ class PagesController < ApplicationController
     @flight = @flights.order(:takeoff_time).first
     @tasks = Task.where(user: @user)
   end
+
+  def points
+  end
 end

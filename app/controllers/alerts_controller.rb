@@ -17,11 +17,13 @@ class AlertsController < ApplicationController
 
   def create
 
+    @flight = Flight.find(params[:flight_id])
     @alert = Alert.new(alert_params)
     @alert.flight = Flight.find(params[:flight_id])
     @alert.user = current_user
-    @flight = Flight.find(params[:flight_id])
+
     if @alert.save
+      @alert.user.increment!(:point, 3)
       redirect_to @flight, notice: "Signalement effectué"
     else
       redirect_to @flight, notice: "Signalement raté"
