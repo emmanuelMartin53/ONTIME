@@ -5,7 +5,9 @@ class Flight < ApplicationRecord
 
   has_one_attached :photo
 
-  validates :valise, presence: true
+  validates :flight_number, presence: true
+  validates :user_departure_address, presence: true
+  validates :mobility_choice, presence: true
 
   enum :mobility_choice, [ :walking, :driving, :transit, :bicycling ]
 
