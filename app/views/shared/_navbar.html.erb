@@ -1,19 +1,27 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "G4 LOGO ONTIME3.JPG" %>
-    <% end %>
+  <div class="container-fluid justify-content-around">
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <div class="navbar-item-width">
+      <button class="navbar-toggler navbar-profil-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <%= cl_image_tag current_user.photo.key, class: "navbar_profil_pic"%>
+      </button>
+    </div>
+    <div class="navbar-item-width">
 
+        <%= link_to root_path, class: "navbar-logo" do %>
+          <%= image_tag "G4 LOGO ONTIME3.JPG" %>
+        <% end %>
+
+    </div>
+
+     <div class="navbar-item-width">
+      <%= link_to tasks_path do %>
+        <i class="fa-solid fa-square-check"></i>
+      <% end %>
+    </div>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <li class="nav-item active">
-            <%= link_to "Accueil", root_path, class: "nav-link" %>
-          </li>
           <li class="nav-item">
             <%= link_to "Modifier profil", edit_user_registration_path, class: "nav-link" %>
           </li>
