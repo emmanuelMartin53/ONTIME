@@ -7,6 +7,4 @@ class PagesController < ApplicationController
     @tasks = Task.where(user: @user)
   end
 
-  def points
-  end
 end

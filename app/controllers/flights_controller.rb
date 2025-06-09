@@ -59,7 +59,7 @@ class FlightsController < ApplicationController
       user = @flight.user
       user.point +=10
       user.save
-      redirect_to @flight, notice: "Vol ajouté avec succès !"
+      redirect_to @flight, notice: "Vol ajouté , + 10pts"
     else
       render :new, status: :unprocessable_entity
     end
