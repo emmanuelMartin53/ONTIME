@@ -76,9 +76,45 @@
         <h3><%= @flight.takeoff_time.strftime("%H:%M")%></h3>
       </div>
     </div>
+
+    <% nav_links = google_maps_navigation_link(@flight.user_departure_address, "aeroport #{@flight.airport}", @flight.mobility_choice) %>
+
     <div class="flight-show-main-card-link">
-      <%= link_to "Lancer la navigation", "https://www.google.com/maps/dir/?api=1&origin=#{@flight.user_departure_address}&destination=aeroport #{@flight.airport}&travelmode=#{@flight.mobility_choice}", target: "_blank" %>
+      <a id="maps-nav-link" href="#" target="_blank">Lancer la navigation</a>
     </div>
+
+    <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    var link = document.getElementById("maps-nav-link");
+
+    var destination = encodeURIComponent("aeroport <%= @flight.airport %>");
+    var origin = encodeURIComponent("<%= @flight.user_departure_address %>");
+    var travelmode = "<%= @flight.mobility_choice %>";
+
+    var dirflg = "d";
+
+    if (travelmode === "walking") {
+      dirflg = "w";
+    } else if (travelmode === "bicycling") {
+      dirflg = "b";
+    } else if (travelmode === "transit") {
+      dirflg = "r";
+    } else {
+      dirflg = "d";
+    }
+
+    if (/android/i.test(userAgent)) {
+      link.href = "intent://maps.google.com/maps?daddr=" + destination + "&dirflg=" + dirflg + "#Intent;scheme=https;package=com.google.android.apps.maps;end;";
+    } else if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+      link.href = "comgooglemaps://?saddr=" + origin + "&daddr=" + destination + "&directionsmode=" + travelmode + "&navigate=yes";
+    } else {
+      link.href = "https://www.google.com/maps/dir/?api=1&origin=" + origin + "&destination=" + destination + "&travelmode=" + travelmode;
+    }
+  });
+</script>
+
+
     <div class="flight-show-map_container" >
 
     <iframe
