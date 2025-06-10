@@ -1,7 +1,7 @@
 class Flight < ApplicationRecord
   belongs_to :user
   has_many :tasks, dependent: :destroy, as: :taskable
-  has_many :alerts
+  has_many :alerts, dependent: :destroy
 
   has_one_attached :photo
 

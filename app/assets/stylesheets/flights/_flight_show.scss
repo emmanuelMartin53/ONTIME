@@ -211,7 +211,7 @@
 	height: 300px;
 	background-color: rgba(76, 202, 221, 0.622);
 	z-index: -1;
-  pointer-events: none;
+	pointer-events: none;
 }
 
 // ------------------------------------------------------------------DETAILS VOL
@@ -221,6 +221,16 @@
 	margin-top: 350px;
 	flex-direction: column;
 	gap: 20px;
+}
+
+.departure-child {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+}
+
+.departure-title {
+	font-weight: 700;
 }
 
 .flight-show-detail-container {
@@ -239,8 +249,9 @@
 
 .flight-show-detail-info {
 	display: flex;
+	width: 100%;
 	flex-direction: column;
-	max-height: 350px;
+	max-height: 400px;
 	align-items: center;
 	padding: 0 16px;
 	text-align: center;
@@ -257,7 +268,9 @@
 	background-color: #4d9afe4a;
 	border-radius: 15px;
 	display: flex;
+	flex-direction: column;
 	margin-bottom: 10px;
+	width: 100%;
 	p {
 		margin: 10px 10px;
 		text-align: center;

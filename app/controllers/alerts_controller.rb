@@ -24,7 +24,7 @@ class AlertsController < ApplicationController
 
     if @alert.save
       @alert.user.increment!(:point, 3)
-      redirect_to @flight, notice: "+ 3points"
+      redirect_to @flight, notice: "+3points"
     else
       redirect_to @flight, notice: "Signalement raté"
     end
