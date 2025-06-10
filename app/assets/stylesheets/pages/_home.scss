@@ -37,12 +37,17 @@
 	border-radius: 15px;
 	background-color: $fond-card;
 	margin-bottom: 12px;
+	overflow: hidden;
 }
 
 .home-index-card-photo {
 	background-color: rgba(205, 81, 81, 0.304);
 	border-radius: 15px 0 0 15px;
 	width: 100px;
+	overflow: hidden;
+	img {
+		width: 100px;
+	}
 }
 
 .home-index-card-info {
