@@ -166,7 +166,7 @@
 }
 .flight-show-main-card-info {
 	display: flex;
-	justify-content: center;
+	justify-content: space-around;
 	gap: 20px;
 	background-color: $fond-card;
 	border-radius: 15px 15px 0 0;
