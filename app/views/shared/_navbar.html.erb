@@ -4,6 +4,7 @@
 
       <div class="navbar-item-width">
         <button class="navbar-toggler navbar-profil-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+
           <% if current_user.photo.attached? %>
             <%= cl_image_tag current_user.photo.key, class: "navbar_profil_pic", alt: "dropdown menu" %>
           <% else %>
@@ -21,6 +22,7 @@
 
       <div class="navbar-item-width">
         <%= link_to tasks_path do %>
+
           <i class="fa-solid fa-list"></i>
         <% end %>
       </div>
