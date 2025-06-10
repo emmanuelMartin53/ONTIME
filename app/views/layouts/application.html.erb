@@ -6,10 +6,9 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
-    <%= favicon_link_tag "G4 LOGO ONTIMEfav.JPG" %>
+    <%= favicon_link_tag "Avion-logo.png" %>
   </head>
 
   <body>
@@ -17,6 +16,7 @@
     <%= render "shared/flashes" %>
 
     <%= yield %>
+    <div class="margin-bottom-50"></div>
     <%= render "shared/navbar" %>
   </body>
 </html>

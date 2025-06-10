@@ -11,6 +11,9 @@
     <% @flightsFutur.each do |flight| %>
       <div class="flight-index-card">
         <div class="flight-index-card-photo">
+          <% if flight.photo.key? %>
+            <%= cl_image_tag flight.photo.key  %>
+          <% end %>
 
         </div>
         <div class="flight-index-card-info">
@@ -30,7 +33,7 @@
     <h3>Passés :</h3>
   </div>
     <% @flightsDone.each do |flight| %>
-      <div class="flight-index-card">
+      <div class="flight-index-card ">
         <div class="flight-index-card-photo">
 
         </div>
@@ -50,7 +53,7 @@
   <% else %>
     <h4>Aucun vol</h4>
   <% end %>
-    <div class="flight-index-add-button">
+    <div class="flight-index-add-button ">
         <%= link_to "+", new_flight_path %>
     </div>
 </div>

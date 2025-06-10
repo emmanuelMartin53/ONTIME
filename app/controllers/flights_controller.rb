@@ -1,6 +1,7 @@
 require 'net/http'
 require 'json'
 require 'uri'
+require 'open-uri'
 
 
 class FlightsController < ApplicationController
@@ -46,16 +47,27 @@ class FlightsController < ApplicationController
         duration_second: duration_second_value,
         estimated_wait: estimated_wait_value,
         valise: params[:flight][:valise],
-        international: params[:flight][:international]
+        international: params[:flight][:international],
+        gate: api_data["departure"]["gate"]
       )
-
     else
       flash[:alert] = "Aucune donnée de vol trouvée pour ce numéro."
       redirect_to new_flight_path and return
     end
 
+    if api_data["arrival"]["airport"] == "Charles De Gaulle"
+      file = URI.parse('https://cdn.sortiraparis.com/images/80/83517/753564-visuel-paris-tour-eiffel-rue.jpg').open
+      @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
+    else
+      file = URI.parse('https://static.seetheworld.com/image_uploader/photos/4a/original/bordeaux-merignac-airport-merignac.jpg').open
+      @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
+    end
+
     if @flight.save
-      redirect_to @flight, notice: "Vol ajouté avec succès !"
+      user = @flight.user
+      user.point +=10
+      user.save
+      redirect_to @flight, notice: "Vol ajouté , + 10pts"
     else
       render :new, status: :unprocessable_entity
     end

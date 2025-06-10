@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container margin-bottom-50">
 
   <div class="flight-index-title">
     <% if user_signed_in? %>
@@ -19,11 +19,13 @@
   <div class="next-travel">
     <% if @flight %>
       <div class="next-travel-text">
-        <h6>J<%= (@flight.takeoff_time.to_date - Date.today).to_i %> avant votre prochain trajet :</h6>
+        <h6>J-<%= (@flight.takeoff_time.to_date - Date.today).to_i %> avant votre prochain trajet :</h6>
       </div>
       <div class="home-index-card">
         <div class="home-index-card-photo">
-          <%= cl_image_tag("paris", version: "1749214394", format: "avif") %>
+          <% if @flight.photo.key? %>
+            <%= cl_image_tag @flight.photo.key  %>
+          <% end %>
         </div>
         <div class="home-index-card-info">
           <p><%= @flight.takeoff_time.strftime("%d/%m/%Y") %></p>
@@ -52,9 +54,7 @@
         </div>
       </div>
       <div class="card">
-
           <h4>Mes vols</h4>
-
         <p><%= @flights.count %> à venir</p>
         <div class="home-index-card2-button">
           <%= link_to "Voir", flights_path %>
@@ -63,15 +63,23 @@
     </div>
     <div class="cards-row">
       <div class="card">
-
           <h4>Ma To Do</h4>
-
         <p><%= @tasks.count %> éléments</p>
         <div class="home-index-card2-button">
           <%= link_to "Voir", tasks_path %>
         </div>
       </div>
-      <div style="width: 150px; height: 0;"></div>
+      <div class="card">
+          <h4>Mes points</h4>
+        <p><%= current_user.point %> Points</p>
+        <div class="home-index-card2-button">
+          <%= link_to "Voir", user_points_path(current_user) %>
+        </div>
+      </div>
     </div>
+
+
+
+
   </div>
 </div>
