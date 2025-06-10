@@ -4,24 +4,53 @@
 
 <div class="flight-index-container">
   <% if @flights.any? %>
-    <% @flights.each do |flight| %>
+  <div class="flight-index-subtitle">
+    <h3>À venir :</h3>
+  </div>
+
+    <% @flightsFutur.each do |flight| %>
       <div class="flight-index-card">
         <div class="flight-index-card-photo">
 
         </div>
         <div class="flight-index-card-info">
           <p><%= flight.takeoff_time.strftime("%d/%m/%Y") %></p>
-          <p><%= flight.destination %></p>
+          <div class="flight-index-card-info-destionation">
+             <p><%= flight.destination %></p>
+          </div>
         </div>
-        <div class="flight-index-card-button">
-          <%= link_to "Voir", flight_path(flight)  %>
+          <div class="home-index-card-button" style="margin-top: 20px">
+          <%= link_to flight_path(flight), class: "ticket-btn" do %>
+            <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-home" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  <div class="flight-index-subtitle subtitle-passe">
+    <h3>Passés :</h3>
+  </div>
+    <% @flightsDone.each do |flight| %>
+      <div class="flight-index-card ">
+        <div class="flight-index-card-photo">
+
+        </div>
+        <div class="flight-index-card-info">
+          <p><%= flight.takeoff_time.strftime("%d/%m/%Y") %></p>
+          <div class="flight-index-card-info-destionation">
+             <p><%= flight.destination %></p>
+          </div>
+        </div>
+          <div class="home-index-card-button" style="margin-top: 20px">
+          <%= link_to flight_path(flight), class: "ticket-btn" do %>
+            <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-home" %>
+          <% end %>
         </div>
       </div>
     <% end %>
   <% else %>
     <h4>Aucun vol</h4>
   <% end %>
-    <div class="flight-index-add-button">
+    <div class="flight-index-add-button ">
         <%= link_to "+", new_flight_path %>
     </div>
 </div>

@@ -77,9 +77,9 @@
       </div>
     </div>
     <div class="flight-show-main-card-link">
-      <%= link_to "C'est parti !", "https://www.google.com/maps/dir/?api=1&origin=#{@flight.user_departure_address}&destination=aeroport #{@flight.airport}&travelmode=#{@flight.mobility_choice}", target: "_blank" %>
+      <%= link_to "Lancer la navigation", "https://www.google.com/maps/dir/?api=1&origin=#{@flight.user_departure_address}&destination=aeroport #{@flight.airport}&travelmode=#{@flight.mobility_choice}", target: "_blank" %>
     </div>
-    <div class="flight-show-map_container">
+    <div class="flight-show-map_container" >
 
     <iframe
       width="400"
@@ -96,40 +96,53 @@
     </div>
 </div>
 
-<div class="flight-show-detail-main-container">
-    <div class="flight-show-detail-container">
+<div class="flight-show-detail-main-container" data-controller="toggle-information">
+    <div class="flight-show-detail-container "
+      data-action="click->toggle-information#disable">
       <h3>Information sur votre vol</h3>
-      <div class="flight-show-detail-info">
+      <div class="flight-show-detail-info flight-show-detail-toggle"
+      data-toggle-information-target="details">
         <p> Terminal : <%= @flight.terminal  %></p>
-        <p> Aéroport de départ : <%= @flight.airport  %></p>
+        <p> Aéroport de départ : <%= @flight.airport.upcase  %></p>
         <h6>N° vol : <%= @flight.flight_number %> </h6>
-        <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
-        <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
-        <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %> min</p>
-        <p>Votre moyen de deplacement : <%= @flight.mobility_choice %></p>
-        <% if @flight.duration_second.present? %>
-            <% hours = @flight.duration_second / 3600 %>
-            <% minutes = (@flight.duration_second % 3600) / 60 %>
-            <p>Temps de trajet entre votre point de depart et l'aeroport: <%= "#{hours} h #{minutes.to_s.rjust(2, '0')}"%></p>
-          <% else %>
-            <p>Durée du trajet non disponible.</p>
-          <% end %>
+        <div class="flight-show-detail-departure">
+          <p>Départ le : <%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <%= @flight.takeoff_time.strftime("%H:%M") %></p>
+          <p>Arrivée le : <%= @flight.landing_time.strftime("%d/%m/%Y") %> à : <%= @flight.landing_time.strftime("%H:%M") %></p>
+        </div>
         <p>Nombre de vol prévu sur votre terminal au même crenau : <%= @flight.estimated_wait %> </p>
-        <%  if @flight.valise  %>
-        <p>Vous avez une valise</p>
-        <% end %>
         <%  if @flight.international  %>
         <p>C'est un vol vers l'internationnal</p>
         <% end %>
+      </div>
+    </div>
 
+    <div class="flight-show-detail-container "
+      data-action="click->toggle-information#disablePersonal">
+      <h3>Vos préferences</h3>
+      <div class="flight-show-detail-info flight-show-detail-toggle"
+      data-toggle-information-target="personal">
+        <p>Temps d'avance à la porte souhaité : <%= @flight.arrival_time_wanted %> min</p>
+        <p>Votre moyen de deplacement : <%= @flight.mobility_choice_label %></p>
+        <% if @flight.duration_second.present? %>
+            <div class="show-flight-personal-trajet">
+              <p><%= "#{@hours } h #{@minutes.to_s.rjust(2, '0')}"%> de trajet à partir de : </p>
+                <div class="show-flight-personal-trajet-duration">
+                  <p><%= @flight.user_departure_address %></p>
 
+              </div>
+            </div>
+          <% else %>
+            <p>Durée du trajet non disponible.</p>
+          <% end %>
+        <%  if @flight.valise  %>
+        <p>Vous avez une valise</p>
+        <% end %>
       </div>
     </div>
 </div>
 
 <div class="flight-show-button">
-    <%= link_to "Voir autre vol", flights_path(@flights)%>
-    <%= link_to "Modifier", edit_flight_path(@flight)%>
+    <%= link_to "Voir autres vols", flights_path(@flights)%>
     <%= link_to "Supprimer", flight_path(@flight),
                               data: { turbo_method: :delete, turbo_confirm: "Supprimer cette réservation ?" } %>
 </div>

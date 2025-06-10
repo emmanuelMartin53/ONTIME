@@ -1,6 +1,5 @@
-
 <h1 class="text-center fw-bold text-black">Ajouter un vol</h1>
-<div class="container py-4">
+<div class="container py-4 margin-bottom-50">
   <div class="row">
     <div class="col-12 col-md-6 offset-lg-3">
       <div class="bg-white rounded p-3 shadow">
@@ -10,16 +9,14 @@
                           input_html: {data: {address_autocomplete_target: "address"}, class: "d-none"},
                           wrapper_html: {data: {controller: "address-autocomplete", address_autocomplete_api_key_value:ENV["MAPBOX_API_KEY"]}},
                           label: "Adresse de départ" %>
-              <%= f.input :valise, as: :boolean %>
+              <%= f.input :valise, as: :radio_buttons, collection: [[ "Oui", true ], [ "Non", false ]], label: "Avez-vous une valise ?", item_wrapper_class: "form-check form-check-inline" %>
               <%= f.input :international, as: :boolean %>
-              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys, label: "Votre moyen de locomotion" %>
+              <%= f.input :mobility_choice, collection: Flight.mobility_choices.keys.map { |k| [Flight::MOBILITY_LABELS[k], k] }, label: "Votre moyen de locomotion" %>
               <%= f.input :arrival_time_wanted, label: "Combien de temps en minutes avant votre vol voulez vous être à votre porte d'embarquement ?" %>
               <div class="d-grid gap-2 mt-3 py-3">
                   <%= f.button :submit, "Créer le vol", class: "btn btn-primary text-white py-3 rounded-pill" %>
               </div>
-              <div class= "link-underline-0">
-                <%= link_to "<", flights_path, class: "btn btn-primary text-white  rounded-circle" %>
-              </div>
+
         <% end %>
       </div>
 

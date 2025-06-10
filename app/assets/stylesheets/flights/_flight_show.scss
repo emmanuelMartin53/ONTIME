@@ -39,6 +39,7 @@
 		border: $blue 2px solid;
 		border-radius: 10px;
 		background-color: $fond-card;
+		padding: 8px 8px;
 	}
 }
 
@@ -135,8 +136,6 @@
 
 .show-flight-alert-form {
 	margin-bottom: 30px;
-	label[for="alert_content"] {
-	}
 
 	input#alert_content {
 		border: 2px solid $blue;
@@ -216,8 +215,10 @@
 // ------------------------------------------------------------------DETAILS VOL
 .flight-show-detail-main-container {
 	display: flex;
-	justify-content: center;
+	align-items: center;
 	margin-top: 250px;
+	flex-direction: column;
+	gap: 20px;
 }
 
 .flight-show-detail-container {
@@ -225,17 +226,62 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	padding: 30px 10px;
 	background-color: $fond-card;
 	gap: 16px;
 	border-radius: 15px;
+	transition: ease-out 0.2s;
+	h3 {
+		margin-top: 16px;
+	}
 }
 
 .flight-show-detail-info {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
+	max-height: 350px;
+	align-items: center;
+	padding: 0 16px;
+	text-align: center;
+	transition: ease 0.2s;
 }
+
+.flight-show-detail-toggle {
+	max-height: 0px;
+	overflow: hidden;
+	transition: ease 0.2s;
+}
+
+.flight-show-detail-departure {
+	background-color: #4d9afe4a;
+	border-radius: 15px;
+	display: flex;
+	margin-bottom: 10px;
+	p {
+		margin: 10px 10px;
+		text-align: center;
+	}
+}
+
+.show-flight-personal-trajet {
+	width: 100%;
+	padding: 10px 20px;
+	background-color: #4d9afe4a;
+	border-radius: 15px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.show-flight-personal-trajet-duration {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	p {
+		margin-bottom: 0;
+	}
+}
+
 // ------------------------------------------------------------------BUTTON
 .flight-show-button {
 	display: flex;
@@ -244,6 +290,7 @@
 	align-items: center;
 	height: max-content;
 	padding: 70px 0;
+	margin-bottom: 50px;
 	a {
 		display: flex;
 		justify-content: center; /* centre horizontalement */
