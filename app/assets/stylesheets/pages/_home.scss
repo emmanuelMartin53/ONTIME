@@ -1,145 +1,159 @@
 .container {
-	background-color: white;
-	padding-bottom: 30px;
+  background-color: white;
+  padding-bottom: 30px;
 }
 
 .image-avatar {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .avatar {
-	width: 100px;
-	height: 100px;
-	border-radius: 50%;
-	object-fit: cover;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
 }
 
 .title {
-	text-align: center;
-	padding: 30px 0;
-  font-size: 32px;
+  text-align: center;
+  padding-top: 12px;
+  font-size: 12px;
   font-weight: 800;
 }
 
 .next-travel {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  h6 {
+    padding-right: 92px;
+    font-weight: bold;
+    margin-bottom: 12px;
+  }
 }
 
 .home-index-card {
-	display: flex;
-	font-size: 12px;
-	height: 70px;
-	width: 320px;
-	align-items: center;
-	border-radius: 15px;
-	background-color: $fond-card;
-	margin-bottom: 12px;
-	overflow: hidden;
+  display: flex;
+  font-size: 12px;
+  height: 70px;
+  width: 320px;
+  align-items: center;
+  border-radius: 15px;
+  background-color: $fond-card;
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+
+.flight-index-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 15px !important;
 }
 
 .home-index-card-photo {
-	background-color: rgba(205, 81, 81, 0.304);
-	border-radius: 15px 0 0 15px;
-	width: 100px;
-	overflow: hidden;
-	img {
-		width: 100px;
-	}
+  background-color: rgba(205, 81, 81, 0.304);
+  border-radius: 15px 0 0 15px;
+  width: 100px;
+  overflow: hidden;
+  img {
+    width: 100px;
+  }
 }
 
 .home-index-card-info {
-	padding: 10px 20px;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	width: 180px;
-	p {
-		margin: 0;
-	}
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 180px;
+  p {
+    margin: 0;
+  }
 }
 
 .icon-ticket-home {
-	margin-right: 12px;
+  margin-right: 12px;
 }
 
 .next-step {
-	text-align: center;
-	color: #71727a;
-	font-size: 12px;
+  text-align: center;
+  font-size: 14px;
+  p {
+    color: #71727a;
+  }
 }
 
 .cards-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 17px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 17px;
 }
 
 .cards-row {
-	display: flex;
-	gap: 20px;
+  display: flex;
+  gap: 20px;
 }
 
 .card {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	height: 150px;
-	width: 150px;
-	padding: 38px 0 0 0;
-	border-radius: 15px;
-	background-color: $fond-card;
-	border: none;
-	text-align: center;
-	overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 150px;
+  width: 150px;
+  padding: 38px 0 0 0;
+  border-radius: 15px;
+  background-color: $fond-card;
+  border: none;
+  text-align: center;
+  overflow: hidden;
 
-	h6 {
-		width: 100%;
-		font-size: 14px;
-		font-weight: bold;
-		display: block;
-		color: black;
-	}
+  h6 {
+    width: 100%;
+    font-size: 14px;
+    font-weight: bold;
+    display: block;
+    color: black;
+  }
 
-	h4 {
-		font-size: 14px;
-		font-weight: bold;
-		color: black;
-		margin: 0px;
-	}
+  h4 {
+    font-size: 14px;
+    font-weight: bold;
+    color: black;
+    margin: 0px;
+  }
 
-	p {
-		font-size: 12px;
-		color: #404146;
-		margin: 0 10px;
-	}
+  p {
+    font-size: 12px;
+    color: #404146;
+    margin: 0 10px;
+  }
 
-	.plus-btn {
-		a {
-			font-size: 18px !important;
-		}
-	}
+  .plus-btn {
+    a {
+      font-size: 18px !important;
+    }
+  }
 
-	.home-index-card2-button {
-		margin-top: auto;
-		width: 100%;
+  .home-index-card2-button {
+    margin-top: auto;
+    width: 100%;
 
-		a {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 35px;
-			width: 100%;
-			background-color: $fond-button;
-			color: white;
-			font-size: 14px;
-			text-decoration: none;
-			border: none;
-			border-radius: 0 0 15px 15px;
-			font-weight: bold;
-		}
-	}
+    a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+      width: 100%;
+      background-color: $fond-button;
+      color: white;
+      font-size: 14px;
+      text-decoration: none;
+      border: none;
+      border-radius: 0 0 15px 15px;
+      font-weight: bold;
+    }
+  }
 }
