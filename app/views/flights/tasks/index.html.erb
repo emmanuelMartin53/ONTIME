@@ -1,10 +1,13 @@
-<div class="accordion-container">
-  <div class="app-title">
-    <h1>Ma To Do</h1>
-    <p>Votre starter pack voyage</p>
+ <div class="firstcard">
+  <div class="accordion-container">
+    <div class="app-title">
+      <h1>Ma To Do</h1>
+      <p>Votre starter pack voyage</p>
+    </div>
+    <%= render partial:'new', locals: {task: @task, flight: @flight} %>
   </div>
-
-  <%= render partial:'new', locals: {task: @task, flight: @flight} %>
+</div>
+<div class="accordion-container">
   <% if @tasks.empty? %>
     <p>Vous n'avez pas encore de tâches dans votre do list...</p>
   <% else %>

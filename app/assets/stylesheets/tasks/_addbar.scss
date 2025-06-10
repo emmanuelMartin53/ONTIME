@@ -1,5 +1,15 @@
 .addbar-todo.style-2 {
-  padding: 0px 0px 48px 0px;
+  padding: 0px 0px 10px 0px;
+}
+
+.checkboxdef {
+  margin-bottom: 20px;
+  color: #a8a8a8;
+  padding-left: 30px;
+}
+
+.form-check-input[type="checkbox"] {
+  border-color: #6fbaff;
 }
 
 .addbar-todo.style-2 .horizontal-form {

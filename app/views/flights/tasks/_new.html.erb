@@ -1,7 +1,12 @@
 <div class="addbar-todo style-2 d-flex justify-content-center">
-  <%= simple_form_for [flight, task], html: { class: "horizontal-form input-group flex-nowrap w-100" } do |f| %>
+  <%= simple_form_for :task, url: flight_tasks_path(@flight.id), html: { class: "horizontal-form input-group flex-nowrap w-100" } do |f| %>
     <%= f.input :category_id, collection: Category.all, label: false, prompt: "...", class: "form-control", input_html: {class: "category-select"} %>
     <%= f.input :content, label: false, class: "form-control" %>
     <%= f.submit '+', class: "form-control newsubmit"  %>
+
+    </div>
+    <div class="checkboxdef form-check">
+      <%= f.input_field :add_to_user_list, as: :boolean %>
+    <label class="form-check-label" for="add_to_user_list">Ajouter définitevement à ma To Do</label>
+  </div>
   <% end %>
-</div>

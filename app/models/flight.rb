@@ -1,6 +1,6 @@
 class Flight < ApplicationRecord
   belongs_to :user
-  has_many :tasks, dependent: :destroy
+  has_many :tasks, dependent: :destroy, as: :taskable
   has_many :alerts
 
   has_one_attached :photo
@@ -11,6 +11,7 @@ class Flight < ApplicationRecord
 
   enum :mobility_choice, [ :walking, :driving, :transit, :bicycling ]
 
+  after_create :set_tasks
   MOBILITY_LABELS = {
     "walking" => "À pied",
     "driving" => "Voiture",
@@ -20,5 +21,16 @@ class Flight < ApplicationRecord
 
   def mobility_choice_label
     MOBILITY_LABELS[mobility_choice]
+  end
+
+  private
+
+  def set_tasks
+    tasks = Task.where(taskable: self.user)
+    tasks.each do |task|
+      dup_task = task.dup
+      dup_task.taskable = self
+      dup_task.save
+    end
   end
 end

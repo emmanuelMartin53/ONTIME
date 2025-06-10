@@ -1,13 +1,13 @@
 class TasksController < ApplicationController
   def index
-    @tasks = current_user.tasks.where(flight_id: nil)
+    @tasks = current_user.tasks
     @tasks_grouped = @tasks.group_by(&:category)
     @task = Task.new
   end
 
   def create
     @task = Task.new(task_params)
-    @task.user = current_user
+    @task.taskable = current_user
 
     if @task.save
       redirect_to tasks_path()
@@ -21,6 +21,10 @@ class TasksController < ApplicationController
     @task.destroy
     redirect_target = params[:return_to].presence || tasks_path
     redirect_to redirect_target, notice: "Votre tâche a bien été supprimée"
+  #   respond_to do |format|
+  #   format.turbo_stream
+  #   format.html { redirect_to request.referer || root_path, notice: "Tâche supprimée." }
+  # end
   end
 
 #   def edit

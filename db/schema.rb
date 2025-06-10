@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_06_143441) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_09_133942) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -80,16 +80,15 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_06_143441) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.bigint "user_id", null: false
     t.boolean "done"
     t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "flight_id"
     t.bigint "category_id"
+    t.string "taskable_type"
+    t.bigint "taskable_id"
     t.index ["category_id"], name: "index_tasks_on_category_id"
-    t.index ["flight_id"], name: "index_tasks_on_flight_id"
-    t.index ["user_id"], name: "index_tasks_on_user_id"
+    t.index ["taskable_type", "taskable_id"], name: "index_tasks_on_taskable"
   end
 
   create_table "users", force: :cascade do |t|
@@ -120,8 +119,6 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_06_143441) do
   add_foreign_key "alerts", "flights"
   add_foreign_key "alerts", "users"
   add_foreign_key "flights", "users"
-  add_foreign_key "tasks", "flights"
-  add_foreign_key "tasks", "users"
   add_foreign_key "votes", "alerts"
   add_foreign_key "votes", "users"
 end
