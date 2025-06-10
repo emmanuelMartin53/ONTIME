@@ -27,23 +27,23 @@ mavalise = Category.create!(name: "Ma valise")
 avantdepartir = Category.create!(name: "Avant de partir")
 
 
-@task = Task.new(user: User.last, content: "prendre des slips", category: mavalise)
+@task = Task.new(content: "prendre des slips", category: mavalise, taskable_type: "User", taskable_id: @user.id)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des pulls", category: mavalise)
+@task = Task.new(content: "prendre des pulls", category: mavalise, taskable_type: "User", taskable_id: @user.id)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des chaussettes", category: mavalise)
+@task = Task.new(content: "prendre des chaussettes", category: mavalise, taskable_type: "User", taskable_id: @user.id)
 @task.save!
-@task = Task.new(user: User.last, content: "prendre des tshirts", category: mavalise)
+@task = Task.new(content: "prendre des tshirts", category: mavalise, taskable_type: "User", taskable_id: @user.id)
 @task.save!
 puts"task created"
 
 
 puts "Starting flight creation"
+
 @flight = Flight.new(user: User.first , flight_number:"AF7437", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice: 1, arrival_time_wanted:60,valise: true, international: true, gate:22)
 
 file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/bab-bhar-tunis.webp').open
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
-
 
 @flight.save!
 puts "Flight created"
@@ -62,6 +62,7 @@ puts "Starting flight creation"
 
 file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/bab-bhar-tunis.webp').open
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
+
 
 @flight.save!
 puts "Flight created"

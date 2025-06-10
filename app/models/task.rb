@@ -1,5 +1,5 @@
 class Task < ApplicationRecord
-  belongs_to :user
+  attr_accessor :add_to_user_list
+  belongs_to :taskable, polymorphic: true
   belongs_to :category
-  belongs_to :flight, optional: true
 end
