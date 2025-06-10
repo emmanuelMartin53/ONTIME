@@ -39,7 +39,7 @@ puts"task created"
 
 
 puts "Starting flight creation"
-@flight = Flight.new(user: User.first , flight_number:"AF7437", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice: 1, arrival_time_wanted:60,valise: true, international: true)
+@flight = Flight.new(user: User.first , flight_number:"AF7437", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice: 1, arrival_time_wanted:60,valise: true, international: true, gate:22)
 
 file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/bab-bhar-tunis.webp').open
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
@@ -49,7 +49,7 @@ file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/ba
 puts "Flight created"
 puts "Starting flight creation"
 
-@flight = Flight.new(user: User.find(2), flight_number:"SUI787",  duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "Charles de Gaule", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice:1, arrival_time_wanted:60,valise: false, international: true)
+@flight = Flight.new(user: User.find(2), flight_number:"SUI787",  duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "Charles de Gaule", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice:1, arrival_time_wanted:60,valise: false, international: true, gate:22, gate:22)
 
 file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/bab-bhar-tunis.webp').open
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
@@ -58,7 +58,7 @@ file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/ba
 puts "Flight created"
 puts "Starting flight creation"
 
-@flight = Flight.new(user: User.find(3) , flight_number:"VOE2410", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice:1, arrival_time_wanted:60, valise: true, international: true)
+@flight = Flight.new(user: User.find(3) , flight_number:"VOE2410", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "tunis", takeoff_time:DateTime.new(2025, 6, 16, 1, 45), landing_time:DateTime.new(2025, 6, 17, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice:1, arrival_time_wanted:60, valise: true, international: true, gate:22)
 
 file = URI.parse('https://guide-voyage-tunisie.com/wp-content/uploads/2022/11/bab-bhar-tunis.webp').open
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")

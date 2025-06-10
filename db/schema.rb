@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2025_06_09_125045) do
+ActiveRecord::Schema[7.1].define(version: 2025_06_10_094509) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -76,6 +76,7 @@ ActiveRecord::Schema[7.1].define(version: 2025_06_09_125045) do
     t.integer "estimated_wait"
     t.boolean "valise"
     t.boolean "international"
+    t.string "gate"
     t.index ["user_id"], name: "index_flights_on_user_id"
   end
 
