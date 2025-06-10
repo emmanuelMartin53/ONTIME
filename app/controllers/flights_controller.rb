@@ -49,13 +49,17 @@ class FlightsController < ApplicationController
         international: params[:flight][:international]
       )
 
+
     else
       flash[:alert] = "Aucune donnée de vol trouvée pour ce numéro."
       redirect_to new_flight_path and return
     end
 
     if @flight.save
-      redirect_to @flight, notice: "Vol ajouté avec succès !"
+      user = @flight.user
+      user.point +=10
+      user.save
+      redirect_to @flight, notice: "Vol ajouté , + 10pts"
     else
       render :new, status: :unprocessable_entity
     end
