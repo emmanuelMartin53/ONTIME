@@ -1,11 +1,65 @@
-.pages-point-container {
+.pages-point-title {
+	margin-top: 50px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+}
+
+.pages-point-container {
+	display: flex;
+	width: 80%;
+	align-items: center;
 	justify-content: center;
-	height: 100vh;
+	height: max-content;
+	margin: 50px auto;
+	gap: 50px;
+}
+
+.point-logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-bottom: 10px;
+	img {
+		width: 35px;
+		height: 35px;
+	}
+	h1 {
+		margin-bottom: 0;
+	}
+}
+
+.pages-point-left {
+	padding-top: 10px;
+	background-color: $fond-card;
+	border-radius: 15px;
+	text-align: center;
+	width: 50%;
 }
 
 .pages-point {
-	text-align: center;
+	width: 50%;
+}
+
+.pages-point-middle {
+	padding-top: 10px;
+	font-size: 24px;
+	font-weight: 800;
+	letter-spacing: 1px;
+	display: flex;
+	justify-content: center;
+	background-color: $fond-card;
+}
+
+.pages-point-partenaire {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 20px;
+	img {
+		height: 40px;
+	}
+	h2 {
+		margin-bottom: 20px;
+	}
 }
