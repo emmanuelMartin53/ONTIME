@@ -80,7 +80,7 @@
     <% nav_links = google_maps_navigation_link(@flight.user_departure_address, "aeroport #{@flight.airport}", @flight.mobility_choice) %>
 
     <div class="flight-show-main-card-link">
-      <a id="maps-nav-link" href="#" target="_blank">Lancer la navigation</a>
+      <a id="maps-nav-link" href="<%= nav_links[:web] %>" target="_blank">Lancer la navigation</a>
     </div>
 
     <script>
