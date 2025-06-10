@@ -23,7 +23,9 @@
       </div>
       <div class="home-index-card">
         <div class="home-index-card-photo">
-          <%= cl_image_tag("paris", version: "1749214394", format: "avif") %>
+          <% if @flight.photo.key? %>
+            <%= cl_image_tag @flight.photo.key  %>
+          <% end %>
         </div>
         <div class="home-index-card-info">
           <p><%= @flight.takeoff_time.strftime("%d/%m/%Y") %></p>
