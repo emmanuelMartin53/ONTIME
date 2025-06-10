@@ -47,10 +47,9 @@ class FlightsController < ApplicationController
         duration_second: duration_second_value,
         estimated_wait: estimated_wait_value,
         valise: params[:flight][:valise],
-        international: params[:flight][:international]
+        international: params[:flight][:international],
+        gate: api_data["departure"]["gate"]
       )
-
-
     else
       flash[:alert] = "Aucune donnée de vol trouvée pour ce numéro."
       redirect_to new_flight_path and return
