@@ -35,7 +35,9 @@ class Flights::TasksController < ApplicationController
     @task = Task.find(params[:id])
 
     if @task.update(task_params)
-      redirect_to flight_tasks_path(@task.taskable), notice: "Tâche terminée"
+      respond_to do |format|
+        format.turbo_stream
+      end
     else
       redirect_to flight_tasks_path(@task.taskable), alert: "Erreur"
     end
