@@ -15,9 +15,21 @@
     <div class="flight-show-task-link">
       <div class="flight-show-task-link-items fondTaskAd">
         <span class="span-white"></span>
-        <span class="span spanAd" style="width: <%= @progress_admin %>px"><p><%= @progress_admin %>%</p></span>
-        <span class="span spanVa" style="width: <%= @progress_valise %>px; margin-left: <%= @progress_admin %>px" ><p><%= @progress_valise %>%</p> </span>
-        <span class="span spanPa" style="width: <%= @progress_partir %>px; margin-left: calc(<%= @progress_valise %>px + <%= @progress_admin %>px) " ><p><%= @progress_partir %>%</p></span>
+        <span class="span spanAd" style="width: <%= @progress_admin %>px">
+          <% if @progress_admin > 20 %>
+            <p><%= @progress_admin %>%</p>
+          <% end %>
+        </span>
+        <span class="span spanVa" style="width: <%= @progress_valise %>px; margin-left: <%= @progress_admin %>px" >
+          <% if @progress_valise > 20 %>
+           <p><%= @progress_valise %>%</p>
+          <% end %>
+        </span>
+        <span class="span spanPa" style="width: <%= @progress_partir %>px; margin-left: calc(<%= @progress_valise %>px + <%= @progress_admin %>px) " >
+          <% if @progress_partir > 20 %>
+            <p><%= @progress_partir %>%</p>
+          <% end %>
+        </span>
       </div>
     </div>
 
