@@ -12,17 +12,16 @@ class EstimatedWait
     response = Net::HTTP.get(url)
     data = JSON.parse(response)
 
-    flights = data["data"] || []  # selon la structure JSON de l'API, "data" contient la liste des vols
-    target_hour = Time.parse(heure ).hour
+    flights = data["data"]
+    return 14 if !flights.present?
 
+    target_hour = Time.parse(heure ).hour
     filtered_flights = flights.select do |flight|
       sched = flight.dig("departure", "scheduled")
       next false unless sched
-
       dt = Time.parse(sched)
       (dt.hour >= target_hour - 1) && (dt.hour < target_hour + 1)
     end
-
     filtered_flights_same_terminal = filtered_flights.select do |flight|
       flight["departure"]["terminal"] == terminal
     end
