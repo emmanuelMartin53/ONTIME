@@ -2,7 +2,7 @@ module ApplicationHelper
   def google_maps_navigation_link(origin, destination, mobility_choice)
     web_link = "https://www.google.com/maps/dir/?api=1&origin=#{ERB::Util.url_encode(origin)}&destination=#{ERB::Util.url_encode(destination)}&travelmode=#{mobility_choice}&dir_action=navigate"
     android_link = "intent://maps.google.com/maps?daddr=#{ERB::Util.url_encode(destination)}&directionsmode=#{mobility_choice}#Intent;scheme=https;package=com.google.android.apps.maps;end;"
-    ios_link = "comgooglemaps://?daddr=#{ERB::Util.url_encode(destination)}&directionsmode=#{mobility_choice}"
+    ios_link = "comgooglemaps://?saddr=#{ERB::Util.url_encode(origin)}&daddr=#{ERB::Util.url_encode(destination)}&directionsmode=#{mobility_choice}&navigate=yes"
 
     {
       web: web_link,
@@ -11,4 +11,3 @@ module ApplicationHelper
     }
   end
 end
-
