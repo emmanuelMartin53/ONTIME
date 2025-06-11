@@ -25,7 +25,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	width: 300px;
+	width: 340px;
 	gap: 8px;
 	padding: 8px 8px;
 	a {
@@ -42,10 +42,14 @@
 }
 
 .flight-show-task-link-items {
+	height: 30px;
+	background-color: $fond-card;
+	width: 100%;
 	position: relative;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	border-radius: 12px;
 }
 
 .fondTaskAd {
@@ -66,27 +70,32 @@
 
 .span {
 	position: absolute;
-	left: 150px;
-
-	height: 7px;
-	border-radius: 5px;
+	left: 10px;
+	height: 12px;
+	p {
+		font-size: 8px;
+		margin-bottom: 3px;
+		margin-left: 5px;
+	}
 }
 
 .spanAd {
 	background-color: $Administratif;
+	border-radius: 5px 0 0 5px;
 }
 .spanVa {
 	background-color: $Mavalise;
 }
 .spanPa {
 	background-color: $Avantdepartir;
+	border-radius: 0 5px 5px 0;
 }
 .span-white {
 	position: absolute;
-	left: 150px;
+	left: 10px;
 	background-color: rgb(255, 255, 255);
-	height: 7px;
-	width: 100px;
+	height: 12px;
+	width: 300px;
 	border-radius: 5px;
 }
 
@@ -177,6 +186,7 @@
 		border: 2px solid $fond-button;
 		background-color: $fond-button;
 		color: white;
+		margin-left: 80px;
 	}
 	input[type="submit"]:hover {
 		border: 2px solid $blue;

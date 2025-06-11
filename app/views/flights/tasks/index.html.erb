@@ -3,6 +3,11 @@
     <h1>Ma To Do</h1>
     <p>Votre kit pré-voyage</p>
   </div>
+  <div class="index-task-flight-validate">
+    <%= link_to flight_path(params[:flight_id]), class: "ticket-btn" do %>
+      <%= inline_svg_tag "icons/Valider.svg", class: "icon-ticket-home" %>
+    <% end %>
+  </div>
   <%= render 'new', task: @task %>
     <%= render 'list', task: @task %>
 </div>
