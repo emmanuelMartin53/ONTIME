@@ -7,6 +7,9 @@ class TasksController < ApplicationController
   end
 
   def create
+    @tasks = current_user.tasks
+    @categories = Category.all
+    @tasks_grouped = @tasks.group_by(&:category)
     @task = Task.new(task_params)
     @task.taskable = current_user
 
@@ -17,7 +20,7 @@ class TasksController < ApplicationController
         format.html {redirect_to tasks_path}
       end
     else
-      render :new, status: :unprocessable_entity
+      render :index, status: :unprocessable_entity
     end
   end
 

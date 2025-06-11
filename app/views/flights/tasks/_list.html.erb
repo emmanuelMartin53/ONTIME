@@ -1,4 +1,4 @@
-  <% @categories.each do |category| %>
+<% @categories.each do |category| %>
   <div class="accordion" id="accordionFlush<%= category.name.gsub(" ", "-") %>">
       <div class="accordion-item">
         <h2 class="accordion-header" id="flush-heading<%= category.name.gsub(" ", "-") %>">
@@ -8,12 +8,14 @@
         </h2>
         <div id="flush-collapse<%= category.name.gsub(" ", "-") %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= category.name.gsub(" ", "-") %>" data-bs-parent="#accordionFlush<%= category.name.gsub(" ", "-") %>">
           <% tasks = @tasks_grouped[category] || [] %>
-          <% if tasks.any? %>
+
+           <% if tasks.any? %>
+
             <% tasks.each do |task| %>
               <%= render task, task: task, category: category %>
              <% end %>
           <% end %>
+        </div>
       </div>
-    </div>
   </div>
-  <% end %>
+<% end %>
