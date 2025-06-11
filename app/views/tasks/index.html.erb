@@ -4,9 +4,5 @@
     <p>Votre kit pré-voyage</p>
   </div>
   <%= render 'new', task: @task %>
-  <% if @tasks.empty? %>
-    <p>Vous n'avez pas encore de tâches dans votre do list...</p>
-  <% else %>
     <%= render 'list', task: @task %>
-  <% end %>
 </div>

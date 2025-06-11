@@ -2,13 +2,17 @@ import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="form"
 export default class extends Controller {
-	static targets = ["form"];
+  reset() {
+    this.element.reset();
+  }
 
-	connect() {
-		console.log("ouiuou");
-	}
+  static targets = ["form"];
 
-	submit() {
-		this.element.requestSubmit();
-	}
+  connect() {
+    console.log("ouiuou");
+  }
+
+  submit() {
+    this.element.requestSubmit();
+  }
 }

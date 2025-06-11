@@ -1,32 +1,21 @@
-  <% @tasks_grouped.each_with_index do |(category, tasks), index| %>
-    <div class="accordion" id="accordionFlush<%= index %>">
+<% @categories.each do |category| %>
+  <div class="accordion" id="accordionFlush<%= category.name.gsub(" ", "-") %>">
       <div class="accordion-item">
-        <h2 class="accordion-header" id="flush-heading<%= index %>">
-          <button class="accordion-button <%= "accordion-button-#{category.name.gsub(" ", "-")}" %> collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= index %>" aria-expanded="false" aria-controls="flush-collapse<%= index %>">
+        <h2 class="accordion-header" id="flush-heading<%= category.name.gsub(" ", "-") %>">
+          <button class="accordion-button <%= "accordion-button-#{category.name.gsub(" ", "-")}" %> collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapse<%= category.name.gsub(" ", "-") %>" aria-expanded="false" aria-controls="flush-collapse<%= category.name.gsub(" ", "-") %>">
             <%= category.name %>
           </button>
         </h2>
-        <div id="flush-collapse<%= index %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= index %>" data-bs-parent="#accordionFlush<%= index %>">
-          <% tasks.each do |task| %>
-            <div class="accordion-body <%= "accordion__#{category.name.gsub(" ", "-")}" %> p-0">
+        <div id="flush-collapse<%= category.name.gsub(" ", "-") %>" class="accordion-collapse collapse" aria-labelledby="flush-heading<%= category.name.gsub(" ", "-") %>" data-bs-parent="#accordionFlush<%= category.name.gsub(" ", "-") %>">
+          <% tasks = @tasks_grouped[category] || [] %>
 
-              <div class="accordion-flex d-flex justify-content-between align-items-center task-line" >
+           <% if tasks.any? %>
 
-              <%= simple_form_for [@flight, task], html: {class: 'mt-2', data: { controller: 'form' } }, method: :patch, remote: true  do |f| %>
-                <%= f.input :done, label: task.content, as: :boolean, checked: task.done,
-                  wrapper_html: { class: "mb-0 #{category.name.gsub(" ", "-")} px-3 py-2" },
-
-                  input_html: { data: {action: "change->form#submit", form_target: "form"}} %>
-              <% end %>
-
-
-
-              <%= link_to "-", task_path(task, return_to: request.fullpath), data: {turbo_method: :delete, turbo_confirm: "Etes vous sûr de vouloir le supprimer ?"},
-              class: "deletetask-#{category.name.gsub(" ", "-")}" %>
-              </div>
-            </div>
-        <% end %>
+            <% tasks.each do |task| %>
+              <%= render task, task: task, category: category %>
+             <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
   </div>
 <% end %>

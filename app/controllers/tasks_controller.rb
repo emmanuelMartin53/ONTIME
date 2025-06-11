@@ -1,19 +1,24 @@
 class TasksController < ApplicationController
   def index
     @tasks = current_user.tasks
+    @categories = Category.all
     @tasks_grouped = @tasks.group_by(&:category)
     @task = Task.new
   end
 
   def create
     @tasks = current_user.tasks
+    @categories = Category.all
     @tasks_grouped = @tasks.group_by(&:category)
     @task = Task.new(task_params)
     @task.taskable = current_user
 
 
     if @task.save
-      redirect_to tasks_path
+      respond_to do |format|
+        format.turbo_stream {render turbo_stream: turbo_stream.append("flush-collapse#{@task.category.name.gsub(" ", "-")}", partial: "tasks/task", locals: {task: @task, category: @task.category})}
+        format.html {redirect_to tasks_path}
+      end
     else
       render :index, status: :unprocessable_entity
     end
@@ -23,11 +28,10 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.destroy
     redirect_target = params[:return_to].presence || tasks_path
-    redirect_to redirect_target, notice: "Votre tâche a bien été supprimée"
-  #   respond_to do |format|
-  #   format.turbo_stream
-  #   format.html { redirect_to request.referer || root_path, notice: "Tâche supprimée." }
-  # end
+    respond_to do |format|
+      format.turbo_stream {render turbo_stream: turbo_stream.remove("task_#{@task.id}")}
+      format.html {redirect_to redirect_target, notice: "Votre tâche a bien été supprimée"}
+    end
   end
 
 #   def edit
