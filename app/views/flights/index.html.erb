@@ -35,6 +35,9 @@
     <% @flightsDone.each do |flight| %>
       <div class="flight-index-card ">
         <div class="flight-index-card-photo">
+          <% if flight.photo.key? %>
+            <%= cl_image_tag flight.photo.key  %>
+          <% end %>
 
         </div>
         <div class="flight-index-card-info">
