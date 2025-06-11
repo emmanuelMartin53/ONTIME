@@ -5,27 +5,24 @@
 <div class="flight-show-task-container">
     <div class="flight-show-task-title">
       <p>Mes tâches</p>
+      <div class="home-index-card-button" style="margin-left: 20px">
+          <%= link_to flight_tasks_path(@flight), class: "ticket-btn" do %>
+            <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-home" %>
+          <% end %>
     </div>
+    </div>
+
     <div class="flight-show-task-link">
-
       <div class="flight-show-task-link-items fondTaskAd">
-        <%= link_to "Administratif", flight_tasks_path(@flight)%>
         <span class="span-white"></span>
-        <span class="span spanAd" style="width: <%= @progress_admin %>px"></span>
-      </div>
-      <div class="flight-show-task-link-items fondTaskVa">
-        <%= link_to "Ma valise", flight_tasks_path(@flight)%>
-        <span class="span-white"></span>
-        <span class="span spanVa" style="width: <%= @progress_valise %>px"></span>
-      </div>
-      <div class="flight-show-task-link-items fondTaskPa">
-        <%= link_to "Avant de partir", flight_tasks_path(@flight) %>
-        <span class="span-white"></span>
-        <span class="span spanPa" style="width: <%= @progress_partir %>px"></span>
-
+        <span class="span spanAd" style="width: <%= @progress_admin %>px"><p><%= @progress_admin %>%</p></span>
+        <span class="span spanVa" style="width: <%= @progress_valise %>px; margin-left: <%= @progress_admin %>px" ><p><%= @progress_valise %>%</p> </span>
+        <span class="span spanPa" style="width: <%= @progress_partir %>px; margin-left: calc(<%= @progress_valise %>px + <%= @progress_admin %>px) " ><p><%= @progress_partir %>%</p></span>
       </div>
     </div>
+
 </div>
+
 
 <div class="flight-show-alert-container"  data-controller="display-alert-form">
     <div class="flight-show-alert-title">
