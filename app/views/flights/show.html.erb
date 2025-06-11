@@ -7,17 +7,20 @@
       <p>Mes tâches</p>
     </div>
     <div class="flight-show-task-link">
-      <div class="flight-show-task-link-items">
-        <%= link_to "Administratif", tasks_path%>
-        <span></span>
+      <div class="flight-show-task-link-items fondTaskAd">
+        <%= link_to "Administratif", flight_tasks_path(@flight)%>
+        <span class="span-white"></span>
+        <span class="span spanAd" style="width: <%= @progress_admin %>px"></span>
       </div>
-      <div class="flight-show-task-link-items">
-        <%= link_to "Ma valise", tasks_path%>
-        <span></span>
+      <div class="flight-show-task-link-items fondTaskVa">
+        <%= link_to "Ma valise", flight_tasks_path(@flight)%>
+        <span class="span-white"></span>
+        <span class="span spanVa" style="width: <%= @progress_valise %>px"></span>
       </div>
-      <div class="flight-show-task-link-items">
-        <%= link_to "Avant de partie", tasks_path %>
-        <span></span>
+      <div class="flight-show-task-link-items fondTaskPa">
+        <%= link_to "Avant de partir", flight_tasks_path(@flight) %>
+        <span class="span-white"></span>
+        <span class="span spanPa" style="width: <%= @progress_partir %>px"></span>
       </div>
     </div>
 </div>

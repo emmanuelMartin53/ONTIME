@@ -24,9 +24,19 @@ class Flights::TasksController < ApplicationController
     end
   end
 
+  def update
+    @task = Task.find(params[:id])
+
+    if @task.update(task_params)
+      redirect_to flight_tasks_path(@task.taskable), notice: "Tâche terminée"
+    else
+      redirect_to flight_tasks_path(@task.taskable), alert: "Erreur"
+    end
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:category_id, :content, :add_to_user_list)
+    params.require(:task).permit(:category_id, :content, :add_to_user_list, :done)
   end
 end
