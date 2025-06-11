@@ -35,7 +35,6 @@
 		font-size: 12px;
 		height: 40px;
 		width: 260px;
-		border: $blue 2px solid;
 		border-radius: 10px;
 		background-color: $fond-card;
 		padding: 8px 8px;
@@ -47,13 +46,48 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	span {
-		position: absolute;
-		right: 10px;
-		background-color: rgb(34, 144, 34);
-		height: 10px;
-		width: 100px;
+}
+
+.fondTaskAd {
+	a {
+		border: $Administratif 2px solid;
 	}
+}
+.fondTaskVa {
+	a {
+		border: $Mavalise 2px solid;
+	}
+}
+.fondTaskPa {
+	a {
+		border: $Avantdepartir 2px solid;
+	}
+}
+
+.span {
+	position: absolute;
+	left: 150px;
+
+	height: 7px;
+	border-radius: 5px;
+}
+
+.spanAd {
+	background-color: $Administratif;
+}
+.spanVa {
+	background-color: $Mavalise;
+}
+.spanPa {
+	background-color: $Avantdepartir;
+}
+.span-white {
+	position: absolute;
+	left: 150px;
+	background-color: rgb(255, 255, 255);
+	height: 7px;
+	width: 100px;
+	border-radius: 5px;
 }
 
 // ------------------------------------------------------------------ALERTES

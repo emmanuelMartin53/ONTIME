@@ -19,6 +19,10 @@ class FlightsController < ApplicationController
     @alerts = Alert.from_airport_and_date(@flight.airport,@flight.takeoff_time)
     @hours = @flight.duration_second / 3600
     @minutes = (@flight.duration_second % 3600) / 60
+    @tasks = @flight.tasks
+    @progress_admin = Task.progressLength(@flight, Category.find_by(name: "Administratif"))
+    @progress_valise = Task.progressLength(@flight, Category.find_by(name: "Ma valise"))
+    @progress_partir = Task.progressLength(@flight, Category.find_by(name: "Avant de partir"))
   end
 
   def new
