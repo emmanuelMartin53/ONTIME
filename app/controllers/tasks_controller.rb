@@ -13,11 +13,12 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     @task.taskable = current_user
 
+    redirect_target = params[:return_to].presence || flight_tasks_path(@task.taskable)
 
     if @task.save
       respond_to do |format|
         format.turbo_stream {render turbo_stream: turbo_stream.append("flush-collapse#{@task.category.name.gsub(" ", "-")}", partial: "tasks/task", locals: {task: @task, category: @task.category})}
-        format.html {redirect_to tasks_path}
+        format.html {redirect_to redirect_target}
       end
     else
       render :index, status: :unprocessable_entity

@@ -31,6 +31,7 @@ class Flights::TasksController < ApplicationController
     end
   end
 
+
   def update
     @task = Task.find(params[:id])
 

@@ -91,6 +91,19 @@
   background-color: $Avantdepartir;
 }
 
+abbr[title="required"] {
+  display: none;
+}
+
+.form-check-input:checked {
+  border-color: white;
+  background-color: #ffffff00;
+}
+
+.form-check-input ~ .form-check-label {
+  color: white;
+}
+
 .form-check-input.is-valid ~ .form-check-label {
   color: white;
 }

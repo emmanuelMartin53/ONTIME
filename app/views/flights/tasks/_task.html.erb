@@ -6,8 +6,8 @@
 
         input_html: { data: {action: "change->form#submit", form_target: "form"}} %>
     <% end %>
-    <%= link_to flight_tasks_path([@flight, task], return_to: request.fullpath), data: {turbo_method: :delete, turbo_confirm: "Etes vous sûr de vouloir le supprimer ?"},
-    class: "deletetask-#{category.name.gsub(" ", "-")}" do %>
+    <%= link_to task_path(task, return_to: request.fullpath), data: {turbo_method: :delete, turbo_confirm: "Etes vous sûr de vouloir le supprimer ?"},
+      class: "deletetask-#{category.name.gsub(" ", "-")}" do %>
       <i class="fa-solid fa-trash"></i>
     <% end %>
   </div>
