@@ -154,9 +154,11 @@
           </div>
 
 
-        <%  if @flight.international  %>
-        <p>C'est un vol vers l'internationnal</p>
-        <% end %>
+          <div class="departure-child">
+            <%  if @flight.international  %>
+            <p class="departure-title">C'est un vol vers l'internationnal</p>
+            <% end %>
+          </div>
       </div>
 
 
