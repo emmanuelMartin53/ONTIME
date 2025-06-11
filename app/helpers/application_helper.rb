@@ -10,4 +10,17 @@ module ApplicationHelper
       ios: ios_link
     }
   end
+
+  def is_mobile?
+    request.user_agent =~ /Android|iPhone|iPad|iPod/
+  end
+
+  def is_ios?
+    request.user_agent =~ /iPhone|iPad|iPod/
+  end
+
+  def is_android?
+    request.user_agent =~ /Android/
+  end
+
 end
