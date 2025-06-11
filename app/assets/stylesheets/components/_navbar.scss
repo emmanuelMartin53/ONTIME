@@ -1,54 +1,53 @@
 .container-fluid {
-	display: flex;
-	justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .navbar-lewagon {
-	padding: 20px 0;
-	position: fixed;
-	z-index: 3;
-	bottom: 0;
-	width: 100%;
-	justify-content: space-around;
-	background: rgba(255, 255, 255, 0.924);
+  padding: 9px 0;
+  position: fixed;
+  z-index: 3;
+  bottom: 0px;
+  width: 100%;
+  background: rgb(255, 255, 255);
 }
 
 .navbar {
-	i {
-		font-size: 35px;
-	}
+  i {
+    font-size: 35px;
+  }
 }
 
 .margin-bottom-50 {
-	margin-bottom: 100px;
+  margin-bottom: 100px;
 }
 
 .navbar-lewagon .navbar-collapse {
-	flex-grow: 0;
+  flex-grow: 0;
 }
 
 .navbar-lewagon .navbar-brand img {
-	width: 40px;
+  width: 40px;
 }
 
 .navbar_profil_pic,
 .navbar-profil-button,
 .navbar-logo {
-	img {
-		height: 40px;
-	}
-	height: 40px;
-	border-radius: 50%;
-	border: none;
-	padding: 0px;
+  img {
+    height: 40px;
+  }
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  padding: 0px;
 }
 
 .navbar-item-width {
-	display: flex;
-	justify-content: center;
-	width: 50px;
-	a {
-		color: black;
-		text-decoration: none;
-	}
+  display: flex;
+  justify-content: center;
+  width: 50px;
+  a {
+    color: black;
+    text-decoration: none;
+  }
 }
