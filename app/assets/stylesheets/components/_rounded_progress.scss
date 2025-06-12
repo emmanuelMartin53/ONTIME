@@ -1,0 +1,66 @@
+.rounded-progress-container {
+	display: flex;
+	gap: 5px;
+}
+
+.circular-progress {
+	position: relative;
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin: 20px auto;
+}
+
+.progress-blue {
+	background: conic-gradient(
+		$Administratif var(--progress, 0%),
+		#e9ecef var(--progress, 0%)
+	);
+}
+.progress-orange {
+	background: conic-gradient(
+		$Mavalise var(--progress, 0%),
+		#e9ecef var(--progress, 0%)
+	);
+}
+.progress-vert {
+	background: conic-gradient(
+		$Avantdepartir var(--progress, 0%),
+		#e9ecef var(--progress, 0%)
+	);
+}
+
+.circular-progress::before {
+	content: "";
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 50%;
+	background: white;
+}
+
+.progress-text {
+	position: relative;
+	z-index: 1;
+	font-weight: bold;
+	font-size: 18px;
+}
+
+.progress-text-blue {
+	color: $Administratif;
+}
+
+.progress-text-orange {
+	color: $Mavalise;
+}
+
+.progress-text-vert {
+	color: $Avantdepartir;
+}
+
+.progress-container {
+	text-align: center;
+}
