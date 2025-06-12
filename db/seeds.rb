@@ -22,31 +22,31 @@ mavalise = Category.create!(name: "Ma valise")
 avantdepartir = Category.create!(name: "Avant de partir")
 
 
-@task = Task.new(content: "Slips", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Slips", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Pulls", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Pulls", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Chaussettes", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Chaussettes", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "T-shirts", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "T-shirts", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Chaussures de rando", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Chaussures de rando", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Trousse de toilette", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Trousse de toilette", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Brosse à dent", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Brosse à dent", category: mavalise, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Papier d'identité", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Papier d'identité", category: administratif, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Visa", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Visa", category: administratif, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Vaccins", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Vaccins", category: administratif, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Nourrir le chat", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Nourrir le chat", category: avantdepartir, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Couper l'arrivée d'eau", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Couper l'arrivée d'eau", category: avantdepartir, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
-@task = Task.new(content: "Déposer le courier", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Déposer le courier", category: avantdepartir, taskable_type: "User", taskable_id: User.first.id)
 @task.save!
 puts"task created"
 
