@@ -1,8 +1,11 @@
-<div class="accordion-container">
+<div class="shadow-bottom-show-flights">
   <div class="app-title">
     <h1>Ma To Do</h1>
     <p>Votre kit pré-voyage</p>
   </div>
+
   <%= render 'new', task: @task %>
+  </div>
+  <div class="accordion-container">
     <%= render 'list', task: @task %>
 </div>
