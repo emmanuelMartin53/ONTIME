@@ -33,14 +33,14 @@
 
 .flight-index-card-info-destionation {
 	p {
-		font-size: 14px;
+		font-size: 17px;
 	}
 }
 
 .flight-index-card {
 	display: flex;
 	height: 70px;
-	width: 300px;
+	width: 320px;
 	border-radius: 15px;
 	background-color: $fond-card;
 }
@@ -55,7 +55,7 @@
 }
 
 .flight-index-card-info {
-	padding: 10px 10px;
+	padding: 10px 8px;
 	overflow: scroll;
 	display: flex;
 	flex-direction: column;
