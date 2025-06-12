@@ -1,13 +1,16 @@
-<div class="flight-index-title">
+<div class="shadow-bottom-show-flights">
+  <div class="flight-index-title">
   <h1>Mes vols</h1>
+  </div>
 </div>
 
 <div class="flight-index-container">
   <% if @flights.any? %>
-  <div class="flight-index-subtitle">
+  <div class="flight-index-subtitle-top">
     <h3>À venir :</h3>
   </div>
 
+  <% if @flightsFutur.any? %>
     <% @flightsFutur.each do |flight| %>
       <div class="flight-index-card">
         <div class="flight-index-card-photo">
@@ -29,6 +32,10 @@
         </div>
       </div>
     <% end %>
+    <% else %>
+    <h4>Aucun vol à venir...</h4>
+  <% end %>
+
   <div class="flight-index-subtitle subtitle-passe">
     <h3>Passés :</h3>
   </div>
@@ -54,7 +61,7 @@
       </div>
     <% end %>
   <% else %>
-    <h4>Aucun vol</h4>
+    <h4>Aucun vol à venir...</h4>
   <% end %>
     <div class="flight-index-add-button ">
         <%= link_to "+", new_flight_path %>

@@ -1,13 +1,14 @@
-<div class="container margin-bottom-50">
-
-  <div class="home-index-title">
+<div class="shadow-bottom-show-flights">
+   <div class="home-index-title">
     <% if user_signed_in? %>
+
       <div class="title">
         <h1>Bienvenue <%= current_user.first_name %> !</h1>
       </div>
+    </div>
     <% end %>
   </div>
-
+<div class="container">
   <div class="next-travel">
     <% if @flight %>
       <div class="next-travel-text">
@@ -43,7 +44,7 @@
   </div> <div class="cards-container"> <div class="cards-row">
       <div class="card">
 
-          <h6>Planifier un trajet</h6>
+          <h6>Nouveau trajet</h6>
 
         <div class="home-index-card2-button plus-btn">
           <%= link_to "+", new_flight_path %>
