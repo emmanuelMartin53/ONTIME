@@ -1,14 +1,22 @@
-<div class="accordion-container">
-  <div class="app-title">
-    <h1>Ma To Do <br>
-    <%= @flight.destination.capitalize %></h1>
-    <p>Votre kit pré-voyage</p>
-  </div>
-  <div class="index-task-flight-validate">
+
+
+  <div class="shadow-bottom-show-flights">
+    <div class="app-title">
+      <h1>Ma To Do</h1>
+      <%= @flight.destination.capitalize %></h1>
+      <p>Votre kit pré-voyage</p>
+    </div>
+
+
+  <%= render 'new', task: @task %>
+
+
+<div class="index-task-flight-validate">
     <%= link_to flight_path(params[:flight_id]), class: "ticket-btn" do %>
       <%= inline_svg_tag "icons/Valider.svg", class: "icon-ticket-home" %>
     <% end %>
+    </div>
   </div>
-  <%= render 'new', task: @task %>
+  <div class="accordion-container">
     <%= render 'list', task: @task %>
 </div>
