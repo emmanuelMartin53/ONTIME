@@ -10,6 +10,7 @@
 	width: 100%;
 	justify-content: space-around;
 	background: rgb(255, 255, 255);
+	padding: 24px 0;
 }
 
 .navbar {
@@ -24,6 +25,22 @@
 
 .margin-bottom-50 {
 	margin-top: 50px;
+	color: black;
+}
+
+#new_flight label {
+	color: black;
+}
+#new_flight {
+	color: black;
+}
+
+#new_flight {
+	color: black;
+}
+
+#new_flight input:checked {
+  background-color: $fond-button;
 }
 
 .navbar-lewagon .navbar-collapse {

@@ -1,14 +1,7 @@
 <div class="container margin-bottom-50">
 
-  <div class="flight-index-title">
+  <div class="home-index-title">
     <% if user_signed_in? %>
-      <div class="image-avatar">
-        <% if current_user.photo.attached? %>
-          <%= cl_image_tag current_user.photo.key, class: "avatar", alt: "dropdown menu" %>
-        <% else %>
-          <%= image_tag "https://static.vecteezy.com/system/resources/previews/024/983/914/non_2x/simple-user-default-icon-free-png.png", class: "avatar", alt: "default avatar" %>
-        <% end %>
-      </div>
       <div class="title">
         <h1>Bienvenue <%= current_user.first_name %> !</h1>
       </div>
@@ -37,9 +30,6 @@
         </div>
       </div>
     <% else %>
-      <div class="next-travel-text">
-        <h6></h6>
-      </div>
   <% end %>
 </div>
 
