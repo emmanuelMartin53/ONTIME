@@ -35,3 +35,8 @@ body {
     font-family: "Inter", sans-serif !important;
   }
 }
+
+.notice-fade-out {
+  opacity: 0;
+  transition: opacity 0.5s;
+}

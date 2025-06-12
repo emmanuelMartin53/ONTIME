@@ -404,23 +404,23 @@ departure-child-depart {
 
 // ------------------------------------------------------------------BUTTON
 .flight-show-button {
-  display: flex;
-  gap: 8px;
-  justify-content: center;
-  height: max-content;
-  padding: 70px 0;
-  margin-bottom: 50px;
-  a {
-    display: flex;
-    justify-content: center; /* centre horizontalement */
-    align-items: center; /* centre verticalement */
-    text-decoration: none;
-    font-size: 18px;
-    height: 36px;
-    max-width: 340px;
-    color: white;
-    background-color: $fond-button;
-    border-radius: 30px;
-    padding: 20px 20px;
-  }
+	display: flex;
+	gap: 8px;
+	justify-content: center;
+	height: max-content;
+	padding: 70px 0;
+	margin-bottom: 50px;
+	a {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+		font-size: 18px;
+		height: 36px;
+		max-width: 340px;
+		color: white;
+		background-color: $fond-button;
+		border-radius: 30px;
+		padding: 20px 20px;
+	}
 }
