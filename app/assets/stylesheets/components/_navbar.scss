@@ -35,12 +35,18 @@
 	color: black;
 }
 
+#new_flight input:not([type="submit"]),
+#flight_mobility_choice {
+	border: 3px solid $fond-button;
+	border-radius: 5px;
+}
+
 #new_flight {
 	color: black;
 }
 
 #new_flight input:checked {
-  background-color: $fond-button;
+	background-color: $fond-button;
 }
 
 .navbar-lewagon .navbar-collapse {
