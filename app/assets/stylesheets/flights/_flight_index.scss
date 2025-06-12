@@ -1,107 +1,114 @@
 .flight-index-title {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: 30px 0px 20px 0px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 
-	h1 {
-		font-size: 32px;
-		font-weight: 800;
-	}
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 0px;
+  h1 {
+    font-size: 32px;
+    font-weight: 800;
+  }
 }
 
 .flight-index-container {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 16px;
-  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  h4 {
+    font-family: "Inter", sans-serif !important;
+    color: #333;
+    font-size: 16px;
+  }
+
 }
 
 .flight-index-subtitle {
-	width: 70%;
-	display: flex;
-	align-content: flex-start;
-	h3 {
-		font-size: 18px;
-		font-weight: 700;
-		margin-bottom: 0px;
-	}
+  width: 82%;
+  display: flex;
+  align-content: flex-start;
+  h3 {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 0px;
+  }
 }
 
 .subtitle-passe {
+
 	margin-top: 15px;
+
 }
 
 .flight-index-card-info-destionation {
-	p {
-		font-size: 17px;
-	}
+  p {
+    font-size: 17px;
+  }
 }
 
 .flight-index-card {
-	display: flex;
-	height: 70px;
-	width: 320px;
-	border-radius: 15px;
-	background-color: $fond-card;
+  display: flex;
+  height: 70px;
+  width: 350px;
+  border-radius: 15px;
+  background-color: $fond-card;
 }
 .flight-index-card-photo {
-	background-color: rgba(205, 81, 81, 0.304);
-	border-radius: 15px 0 0 15px;
-	width: 100px;
-	overflow: hidden;
-	img {
-		width: 100px;
-	}
+  background-color: rgba(205, 81, 81, 0.304);
+  border-radius: 15px 0 0 15px;
+  width: 100px;
+  overflow: hidden;
+  img {
+    width: 100px;
+  }
 }
 
 .flight-index-card-info {
-	padding: 10px 8px;
-	overflow: scroll;
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-start;
-	width: 180px;
-	p {
-		margin: 0;
-	}
+  padding: 10px 8px;
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 180px;
+  p {
+    margin: 0;
+  }
 }
 
 .flight-index-card-button {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 70px;
-	padding: 0 10px;
-	a {
-		background-color: $fond-button;
-		color: white;
-		border-radius: 10px;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-		height: 30px;
-		width: 50px;
-	}
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70px;
+  padding: 0 10px;
+  a {
+    background-color: $fond-button;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    align-items: center; /* centre verticalement */
+    text-decoration: none;
+    height: 30px;
+    width: 50px;
+  }
 }
 
 .flight-index-add-button {
-	height: 40px;
-	width: 240px;
-	background-color: $fond-button;
-	border-radius: 25px;
-	margin-top: 30px;
-	a {
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		text-decoration: none;
-		font-size: 30px;
-		color: white;
-		height: 40px;
-		width: 240px;
-	}
+  height: 40px;
+  width: 240px;
+  background-color: $fond-button;
+  border-radius: 25px;
+  margin-top: 10px;
+  a {
+    display: flex;
+    justify-content: center; /* centre horizontalement */
+    align-items: center; /* centre verticalement */
+    text-decoration: none;
+    font-size: 30px;
+    color: white;
+    height: 40px;
+    width: 240px;
+  }
 }
