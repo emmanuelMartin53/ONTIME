@@ -11,7 +11,11 @@
   <div class="next-travel">
     <% if @flight %>
       <div class="next-travel-text">
-        <h6>J-<%= (@flight.takeoff_time.to_date - Date.today).to_i %> avant votre prochain trajet :</h6>
+        <% if (@flight.takeoff_time.to_date - Date.today).to_i == 0 %>
+          <h6>Jour J pour votre prochain trajet :</h6>
+        <% else %>
+          <h6>J-<%= (@flight.takeoff_time.to_date - Date.today).to_i %> avant votre prochain trajet :</h6>
+        <% end %>
       </div>
       <div class="home-index-card">
         <div class="home-index-card-photo">
