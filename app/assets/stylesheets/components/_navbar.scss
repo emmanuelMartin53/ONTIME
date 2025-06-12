@@ -32,6 +32,14 @@
 	color: black;
 }
 
+#new_flight {
+	color: black;
+}
+
+#new_flight input:checked {
+  background-color: $fond-button;
+}
+
 .navbar-lewagon .navbar-collapse {
 	flex-grow: 0;
 }
