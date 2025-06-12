@@ -6,7 +6,7 @@
   allowfullscreen
   referrerpolicy="no-referrer-when-downgrade"
   src="https://www.google.com/maps/embed/v1/directions?key=<%=ENV["GOOGLE_API_KEY"] %>
-    &origin=<%=@flight.user_departure_address%>
+    &origin=<%= ERB::Util.url_encode(@flight.user_departure_address) %>
     &destination=airport<%= @flight.airport%>
     &avoid=tolls|highways&mode=<%= @flight.mobility_choice%>&zoom=11">
 </iframe>
