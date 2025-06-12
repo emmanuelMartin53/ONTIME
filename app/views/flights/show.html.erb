@@ -1,69 +1,74 @@
 <div class="flight-show-title">
     <h1>Mon vol vers <br> <%= @flight.destination.capitalize %></h1>
 </div>
+<div class="shadow-bottom"> </div>
+
 
 <div class="flight-show-task-container">
-    <div class="flight-show-task-title">
-      <p>Mes tâches</p>
-      <div class="home-index-card-button" style="margin-left: 20px">
-          <%= link_to flight_tasks_path(@flight), class: "ticket-btn" do %>
-            <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-home" %>
-          <% end %>
-    </div>
-    </div>
-
-    <div class="flight-show-task-link">
-      <div class="flight-show-task-link-items fondTaskAd">
-        <span class="span-white"></span>
-        <span class="span spanAd" style="width: <%= @progress_admin %>px"><p><%= @progress_admin %>%</p></span>
-        <span class="span spanVa" style="width: <%= @progress_valise %>px; margin-left: <%= @progress_admin %>px" ><p><%= @progress_valise %>%</p> </span>
-        <span class="span spanPa" style="width: <%= @progress_partir %>px; margin-left: calc(<%= @progress_valise %>px + <%= @progress_admin %>px) " ><p><%= @progress_partir %>%</p></span>
-      </div>
-    </div>
-
-</div>
-
-
-<div class="flight-show-alert-container"  data-controller="display-alert-form">
-    <div class="flight-show-alert-title">
-      <p>Alertes</p>
-    </div>
-
-    <div class="flight-show-alert-card-container">
-  <% @alerts.each do |alert| %>
-    <%= turbo_frame_tag dom_id(alert) do%>
-      <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
-        <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
-          <i class="fa-solid fa-triangle-exclamation"></i>
-          <%= render 'alerts/alert', alert: alert %>
-        </div>
-
-        <% unless alert.user == current_user %>
-          <div class="flight-show-alert-card-vote show-form-hidden">
-              <%= button_to upvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user), method: :patch do  %>
-                <i class="fa-solid fa-thumbs-up "></i>
-              <% end %>
-              <%= button_to downvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user) , method: :patch, turbo: false do  %>
-                <i class="fa-solid fa-thumbs-down"></i>
-              <% end %>
-          </div>
-      <% end %>
-       </div>
-    <% end %>
-  <% end %>
+  <div class="flight-show-task-title">
+    <p>Mes tâches</p>
+    <div class="home-index-card-button" style="margin-left: 20px">
+        <%= link_to flight_tasks_path(@flight), class: "ticket-btn" do %>
+          <%= inline_svg_tag "icons/ticket-btn.svg", class: "icon-ticket-flight" %>
+        <% end %>
+  </div>
   </div>
 
-    <div class="flight-show-alert-form-display">
-         <div class="flight-show-alert-form show-form-hidden" data-display-alert-form-target="togglableElement">
-          <%= render "alerts/form" %>
-        </div>
-        <button data-action="click->display-alert-form#switch">
-          <p class="" data-display-alert-form-target="togglableElementPlus"> + </p>
-          <p class="show-form-hidden" data-display-alert-form-target="togglableElementMoins"> - </p>
-        </button>
-
+  <div class="flight-show-task-link">
+    <div class="flight-show-task-link-items fondTaskAd">
+      <span class="span-white"></span>
+      <span class="span spanAd" style="width: <%= @progress_admin %>px"><p><%= @progress_admin %>%</p></span>
+      <span class="span spanVa" style="width: <%= @progress_valise %>px; margin-left: <%= @progress_admin %>px" ><p><%= @progress_valise %>%</p> </span>
+      <span class="span spanPa" style="width: <%= @progress_partir %>px; margin-left: calc(<%= @progress_valise %>px + <%= @progress_admin %>px) " ><p><%= @progress_partir %>%</p></span>
     </div>
+  </div>
 </div>
+
+<div class="flight-show-alert-container"  data-controller="display-alert-form">
+  <div class="flight-show-alert-title">
+    <p>Alertes liées à mon trajet</p>
+    <div class="home-index-card-button" style="margin-left: 20px">
+      <%= link_to flight_tasks_path(@flight), class: "ajout-btn-flight" do %>
+      <%= inline_svg_tag "icons/ajout_alertes.svg", class: "icon-ticket-ajout" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="flight-show-alert-card-container">
+    <% @alerts.each do |alert| %>
+      <%= turbo_frame_tag dom_id(alert) do%>
+        <div class="flight-show-alert-wrapper" data-alert-id="<%= alert.id %>">
+          <div class="flight-show-alert-card" data-action="click->display-alert-form#switchVote">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            <%= render 'alerts/alert', alert: alert %>
+          </div>
+
+          <% unless alert.user == current_user %>
+            <div class="flight-show-alert-card-vote show-form-hidden">
+                <%= button_to upvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user), method: :patch do  %>
+                  <i class="fa-solid fa-thumbs-up "></i>
+                <% end %>
+                <%= button_to downvote_alert_path(alert), disabled: alert.is_voted_by_user?(current_user) , method: :patch, turbo: false do  %>
+                  <i class="fa-solid fa-thumbs-down"></i>
+                <% end %>
+            </div>
+        <% end %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="flight-show-alert-form-display">
+      <div class="flight-show-alert-form show-form-hidden" data-display-alert-form-target="togglableElement">
+        <%= render "alerts/form" %>
+      </div>
+      <button data-action="click->display-alert-form#switch">
+        <p class="" data-display-alert-form-target="togglableElementPlus"> + </p>
+        <p class="show-form-hidden" data-display-alert-form-target="togglableElementMoins"> - </p>
+      </button>
+  </div>
+</div>
+
 
 <div class="flight-show-main-card-container">
     <div class="flight-show-main-card-info">
@@ -93,97 +98,96 @@
 </div>
 
 <div class="flight-show-detail-main-container" data-controller="toggle-information">
-    <div class="flight-show-detail-container "
+    <div class="flight-show-detail-container"
       data-action="click->toggle-information#disable">
       <h3>Information sur votre vol</h3>
       <div class="flight-show-detail-info flight-show-detail-toggle"
       data-toggle-information-target="details">
 
-
           <div class="departure-child">
-            <p class="departure-title">Départ:</p>
-            <p><%= @flight.takeoff_time.strftime("%d/%m/%Y") %>  <%= @flight.takeoff_time.strftime("%H:%M") %></p>
-
-          </div>
-          <div class="departure-child">
-            <p class="departure-title">Arrivée:</p>
-            <p><%= @flight.landing_time.strftime("%d/%m/%Y") %> <%= @flight.landing_time.strftime("%H:%M") %></p>
+            <p class="departure-title"><i class="fas fa-plane-departure"></i> Départ:</p>
+            <p class="flight-time"><%= @flight.takeoff_time.strftime("%d/%m/%Y") %> à <strong><%= @flight.takeoff_time.strftime("%H:%M") %></strong></p>
           </div>
 
           <div class="departure-child">
-              <p class="departure-title">Aéroport <br> de départ: </p>
-              <p><%= @flight.airport  %></p>
+            <p class="departure-title"><i class="fas fa-plane-arrival"></i> Arrivée:</p>
+            <p class="flight-time"><%= @flight.landing_time.strftime("%d/%m/%Y") %> à <strong><%= @flight.landing_time.strftime("%H:%M") %></strong></p>
           </div>
 
           <div class="departure-child">
-            <p class="departure-title">Terminal: </p>
-            <p><%= @flight.terminal  %></p>
+              <p class="departure-title"><i class="fas fa-building"></i> Aéroport de départ:</p>
+              <p class="airport-name"><%= @flight.airport %></p>
           </div>
 
           <div class="departure-child">
-            <p class="departure-title">Porte:</p>
-            <p> <%= @flight.gate  %></p>
-          </div>
-
-
-          <div class="departure-child">
-              <p class="departure-title">Aéroport <br> d'arrivée: </p>
-              <p><%= @flight.destination  %></p>
+              <p class="departure-title"><i class="fas fa-map-marker-alt"></i> Aéroport d'arrivée:</p>
+              <p class="airport-name"><%= @flight.destination %></p>
           </div>
 
           <div class="departure-child">
-              <p class="departure-title">N° vol: </p>
-              <p><%= @flight.flight_number   %></p>
+            <p class="departure-title"><i class="fas fa-door-open"></i> Terminal:</p>
+            <p class="terminal-info"><%= @flight.terminal %></p>
           </div>
 
           <div class="departure-child">
-              <p class="departure-title">Vol prévu sur terminal: </p>
-              <p> <%= @flight.estimated_wait %> </p>
+            <p class="departure-title"><i class="fas fa-sign"></i> Porte:</p>
+            <p class="gate-info"><%= @flight.gate %></p>
           </div>
 
+          <div class="departure-child">
+              <p class="departure-title"><i class="fas fa-ticket-alt"></i> N° de vol:</p>
+              <p class="flight-number"><%= @flight.flight_number %></p>
+          </div>
 
-        <%  if @flight.international  %>
-        <p>C'est un vol vers l'internationnal</p>
+          <div class="departure-child">
+              <p class="departure-title"><i class="fas fa-hourglass-half"></i> Temps d'attente prévu:</p>
+              <p class="wait-time"><%= @flight.estimated_wait %></p>
+          </div>
+
+        <% if @flight.international %>
+          <div class="international-flight">
+            <p><i class="fas fa-globe-americas"></i> <strong>Vol international</strong></p>
+          </div>
         <% end %>
       </div>
-
-
     </div>
 
-    <div class="flight-show-detail-container "
+    <div class="flight-show-detail-container"
       data-action="click->toggle-information#disablePersonal">
-      <h3>Vos préferences</h3>
+      <h3>Vos préférences</h3>
       <div class="flight-show-detail-info flight-show-detail-toggle"
         data-toggle-information-target="personal">
+
         <% if @flight.duration_second.present? %>
-
-        <div class="departure-child">
-              <p class="departure-title">Départ de: </p>
-              <p><%= @flight.user_departure_address %></p>
+        <div class="departure-child-depart">
+          <p class="departure-title"><i class="fas fa-home"></i> Départ de:</p>
+          <p class="departure-address"><%= @flight.user_departure_address %></p>
         </div>
 
         <div class="departure-child">
-              <p class="departure-title">Temps de trajet: </p>
-              <p><%= "#{@hours } h #{@minutes.to_s.rjust(2, '0')}"%></p>
+          <p class="departure-title"><i class="fas fa-clock"></i> Temps de trajet:</p>
+          <p class="travel-time"><strong><%= "#{@hours}h #{@minutes.to_s.rjust(2, '0')}min" %></strong></p>
         </div>
-
-          <% else %>
+        <% else %>
           <div class="departure-child">
-            <p class="departure-title">Durée du trajet non disponible.</p>
-          </div>
-          <% end %>
-        <% if @flight.valise  %>
-          <div class="departure-child">
-            <p class="departure-title">Vous devez enregistrer une valise</p>
+            <p class="departure-title"><i class="fas fa-exclamation-triangle"></i> Durée du trajet non disponible</p>
           </div>
         <% end %>
+
+        <% if @flight.valise %>
+          <div class="departure-child baggage-info">
+            <p class="departure-title"><i class="fas fa-suitcase-rolling"></i> <strong>Enregistrement de valise requis</strong></p>
+          </div>
+        <% end %>
+
         <div class="departure-child">
-            <p class="departure-title">Moyen de deplacement: </p>
-            <p> <%= @flight.mobility_choice_label %></p>
+            <p class="departure-title"><i class="fas fa-car"></i> Moyen de déplacement:</p>
+            <p class="mobility-choice"><strong><%= @flight.mobility_choice_label %><strong></p>
         </div>
+
         <div class="departure-child">
-            <p class="departure-title">Temps d'avance souhaité: </p>
-            <p><%= @flight.arrival_time_wanted %> min</p>
+            <p class="departure-title"><i class="fas fa-stopwatch"></i> Temps d'avance souhaité:</p>
+            <p class="advance-time"><strong><%= @flight.arrival_time_wanted %> minutes</strong></p>
         </div>
       </div>
     </div>
