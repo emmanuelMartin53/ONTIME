@@ -11,8 +11,8 @@ file = URI.parse('https://ca.slack-edge.com/T02NE0241-U08N2TFLD44-6441cb5ca2fc-5
 @user.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
 @user.save
 puts "user created"
-@user = User.new(email:"test1@gmail.com", password:"ouioui", first_name:"test1" )
-file = URI.parse('https://raw.githubusercontent.com/RubberDuckDebugging/rubberduckdebugging.github.io/master/images/rubberducky.png').open
+@user = User.new(email:"charlie@gmail.com", password:"ouioui", first_name:"Charlie" )
+file = URI.parse('https://avatars.githubusercontent.com/u/117690497?v=4').open
 @user.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
 @user.save
 puts "user created"
@@ -22,21 +22,31 @@ mavalise = Category.create!(name: "Ma valise")
 avantdepartir = Category.create!(name: "Avant de partir")
 
 
-@task = Task.new(content: "prendre des slips", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Slips", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
-@task = Task.new(content: "prendre des pulls", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Pulls", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
-@task = Task.new(content: "prendre des chaussettes", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Chaussettes", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
-@task = Task.new(content: "prendre des tshirts", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "T-shirts", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task.save!
+@task = Task.new(content: "Chaussures de rando", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task.save!
+@task = Task.new(content: "Trousse de toilette", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
+@task.save!
+@task = Task.new(content: "Brosse à dent", category: mavalise, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
 @task = Task.new(content: "Papier d'identité", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
 @task = Task.new(content: "Visa", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
-@task = Task.new(content: "Nourrir le chien", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
+@task = Task.new(content: "Vaccins", category: administratif, taskable_type: "User", taskable_id: User.find(1).id)
+@task.save!
+@task = Task.new(content: "Nourrir le chat", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
 @task = Task.new(content: "Couper l'arrivée d'eau", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
+@task.save!
+@task = Task.new(content: "Déposer le courier", category: avantdepartir, taskable_type: "User", taskable_id: User.find(1).id)
 @task.save!
 puts"task created"
 
