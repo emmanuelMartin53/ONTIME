@@ -51,6 +51,7 @@ avantdepartir = Category.create!(name: "Avant de partir")
 puts"task created"
 
 
+
 puts "Starting flight creation"
 
 @flight = Flight.new(user: User.first , flight_number:"AF7345", duration_second: 1312, estimated_wait:2, airport:"bordeaux", destination: "Tunis", takeoff_time:DateTime.new(2025, 7, 10, 1, 45), landing_time:DateTime.new(2025, 7, 10, 6, 45), user_departure_address:"15 rue des doris 33130 Bègles", mobility_choice: 1, arrival_time_wanted:60,valise: true, international: true, terminal: "B", gate:23)
@@ -88,8 +89,6 @@ file = URI.parse('https://cdn.sortiraparis.com/images/80/83517/753564-visuel-par
 @flight.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
 @flight.save!
 puts "Flight created"
-
-
 
 
 
