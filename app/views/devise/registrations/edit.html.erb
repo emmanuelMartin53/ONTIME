@@ -1,37 +1,39 @@
 <h2>Modifier <%= resource_name.to_s.humanize %></h2>
 
-<%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
-  <%= f.error_notification %>
-
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
-
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
-
-    <%= f.input :current_password,
-                label: "Mot de passe actuel",
-                hint: "Nous avons besoin de votre mot de passe actuel pour le changer",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-    <%= f.input :password,
-                label: "Nouveau mot de passe",
-                hint: "Laisser vide si vous ne souhaitez pas changer votre mot de passe",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                label: "Confirmer mot de passe",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :photo, as: :file %>
+<div class="container py-4 margin-bottom-10">
+  <div class="row">
+    <div class="col-12 col-md-6 offset-l">
+      <div class="bg-white rounded p-3 shadow">
+          <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+            <%= f.error_notification %>
+            <div class="form-inputs">
+              <%= f.input :email, required: true, autofocus: true %>
+              <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+                <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+              <% end %>
+              <%= f.input :current_password,
+                          label: "Mot de passe actuel",
+                          hint: "Nous avons besoin de votre mot de passe actuel pour le changer",
+                          required: true,
+                          input_html: { autocomplete: "current-password" } %>
+              <%= f.input :password,
+                          label: "Nouveau mot de passe",
+                          hint: "Laisser vide si vous ne souhaitez pas changer votre mot de passe",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :password_confirmation,
+                          label: "Confirmer mot de passe",
+                          required: false,
+                          input_html: { autocomplete: "new-password" } %>
+              <%= f.input :photo, as: :file %>
+            </div>
+            <div class="form-actions">
+              <%= f.button :submit, "Enregistrer" , class: "btn btn-primary text-white py-3 rounded-pill" %>
+            </div>
+          <% end %>
+      </div>
+    </div>
   </div>
-
-  <div class="form-actions">
-    <%= f.button :submit, "Enregistrer" %>
-  </div>
-<% end %>
-
-<div>Pas content ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Vous êtes sûr de vouloir supprimer votre compte ?", turbo_confirm: "Vous êtes sûr de vouloir supprimer votre compte ?" }, method: :delete %></div>
-
-<%= link_to "Retour", :back %>
+</div>
+<div>Pas content ? <%= button_to "Supprimer mon compte", registration_path(resource_name), data: { confirm: "Vous êtes sûr de vouloir supprimer votre compte ?", turbo_confirm: "Vous êtes sûr de vouloir supprimer votre compte ?" }, method: :delete,
+ class: "btn btn-warning text-white py-3 my- rounded-pill"  %></div>
