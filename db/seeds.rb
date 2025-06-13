@@ -16,6 +16,11 @@ file = URI.parse('https://avatars.githubusercontent.com/u/117690497?v=4').open
 @user.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
 @user.save
 puts "user created"
+@user = User.new(email:"manu@gmail.com", password:"yesyes", first_name:"Emmanuel" )
+file = URI.parse('https://avatars.githubusercontent.com/u/83221976?u=0f44631161b4dee67ad75b7dd2d4c84e386d6c27&v=4&size=64').open
+@user.photo.attach(io: file, filename: "photo-#{rand(300000000)}.png", content_type: "image/png")
+@user.save
+puts "user created"
 
 administratif = Category.create!(name: "Administratif")
 mavalise = Category.create!(name: "Ma valise")
